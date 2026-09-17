@@ -1427,6 +1427,96 @@ body > a[href="#"]:last-of-type:hover {
 @media (prefers-reduced-motion: reduce){
   .hero-brand-card,.agent-card,.chip-inner,.hv-glow{animation:none}
 }
+
+/* ============ FINAL ALL-DEVICE RESPONSIVE SAFETY LAYER ============ */
+/* Keep every layout inside the viewport, including the out-of-body checkout link. */
+html, body { max-width: 100%; }
+body { min-width: 0; }
+.container { width: 100%; }
+
+/* Prevent long labels and form controls from forcing horizontal scrolling. */
+.brand-name, h1, h2, h3, h4, p, a, button, label, .stat p,
+.c-items a, .c-items b, .f-col a, .end-pill-card .pill-label {
+  overflow-wrap: anywhere;
+}
+.f-field input, .f-field select, .f-field textarea { min-width: 0; }
+
+/* Large displays: preserve readable line lengths and avoid oversized visual modules. */
+@media (min-width: 1440px) {
+  .container { max-width: 1320px; }
+  .hero { min-height: 88svh; }
+  .hero-visual { max-width: 560px; }
+}
+
+/* Tablet and smaller laptops. */
+@media (max-width: 1080px) {
+  .hero-grid { grid-template-columns: minmax(0, 1fr); }
+  .hero-left-intro { width: min(760px, 100%); margin-inline: auto; }
+  .hero-visual { width: min(620px, 100%); }
+  .about-grid, .contact-grid { grid-template-columns: minmax(0, 1fr); }
+  .about-copy { max-width: 70ch; }
+  .svc-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .end-solutions-panel { grid-template-columns: minmax(0, 1fr); }
+  .end-pills-col { max-width: 560px; }
+}
+
+@media (max-width: 920px) {
+  .nav-links, .nav-cta { display: none; }
+  .burger { display: flex; }
+  .hero { padding-top: 100px; }
+  .brand-real-row, .brand-talk-row { white-space: nowrap; }
+  .hero-brand-card { width: 100%; }
+  .radial-wrap { overflow: hidden; }
+  .ind-scroll { max-width: 100%; }
+}
+
+/* Phones: use one-column content and make controls easy to tap. */
+@media (max-width: 600px) {
+  .container { padding-inline: 16px; }
+  .section { padding-block: 58px; }
+  .hero { padding: 92px 0 34px; }
+  .hero-grid { gap: 26px; }
+  .hero-left-intro { text-align: center; }
+  .hero-motto-block { text-align: left; }
+  .hero-buttons-row { align-items: stretch; }
+  .btn-orange-pill, .btn-dark-pill, .contact-form .btn { width: 100%; justify-content: center; }
+  .hero-visual { min-height: 335px; }
+  .hv-card { width: min(280px, 76vw); }
+  .chip-csat { left: -4px; }
+  .chip-ticket { right: -4px; }
+  .chip-volume { left: -4px; }
+  .chip-global { right: -4px; }
+  .chip-inner { max-width: 46vw; }
+  .chip-txt { min-width: 0; }
+  .chip-txt strong, .chip-txt span { overflow-wrap: normal; white-space: nowrap; }
+  .stats-grid, .svc-grid, .f-grid, .gmap-legend, .radial-grid { grid-template-columns: 1fr; }
+  .stat + .stat, .stat:nth-child(3) { border-left: 0; }
+  .stat + .stat { border-top: 1px solid rgba(255,255,255,.1); }
+  .f-row { grid-template-columns: 1fr; gap: 0; }
+  .contact-form { padding: 22px 16px; }
+  .timeline { padding-inline: 16px; }
+  .gmap-panel { overflow-x: auto; }
+  .gmap { width: 620px; max-width: none; transform: none; }
+  .end-solutions-panel { padding: 26px 16px; }
+  .end-text-side { text-align: left; }
+  .end-pill-card { gap: 12px; padding-inline: 14px; }
+  .end-explore-btn { min-height: 54px; }
+  .f-bottom { align-items: flex-start; }
+  body > a[href="#"]:last-of-type {
+    display: flex;
+    width: calc(100% - 32px);
+    margin: 24px 16px;
+  }
+}
+
+/* Very narrow phones: prevent the logo from clipping at the edges. */
+@media (max-width: 380px) {
+  .brand-real-row { font-size: clamp(2.35rem, 13vw, 3.2rem); }
+  .brand-talk-row { font-size: clamp(2.25rem, 12.5vw, 3.1rem); }
+  .logo-faces-silhouette { width: 32px; height: 44px; margin-inline: 2px; }
+  .hero-visual { min-height: 315px; }
+  .chip-inner { padding: 7px; }
+}
 </style>
 </head>
 <body>
