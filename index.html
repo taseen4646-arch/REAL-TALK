@@ -877,7 +877,7 @@ body.menu-open .m-cta{opacity:1;transform:none}
 .ind-desc{position:absolute;left:20px;right:20px;bottom:20px;font-size:.84rem;line-height:1.6;color:var(--muted);opacity:0;transform:translateY(12px);transition:opacity .45s .12s,transform .45s .12s var(--ease)}
 .ind-item:hover .ind-desc,.ind-item.open .ind-desc{opacity:1;transform:none}
 
-.ind-item:nth-child(9) .ind-card, .ind-item:nth-child(10) .ind-card {
+.ind-item:nth-child(1) .ind-card, .ind-item:nth-child(2) .ind-card {
   border: 2px solid var(--orange);
   background: linear-gradient(180deg, #181824 0%, #0E0E16 100%);
 }
@@ -950,10 +950,10 @@ body.menu-open .m-cta{opacity:1;transform:none}
 .contact-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(44px,6vw,80px)}
 .contact-info h2{font-size:var(--fs-h2);margin-bottom:20px;color:#FFFFFF;text-shadow:0 4px 18px rgba(0,0,0,0.4)}
 .contact-info > p{color:#FFFFFF;max-width:52ch;margin-bottom:40px;font-size:1.02rem;font-weight:600;text-shadow:0 2px 10px rgba(0,0,0,0.3)}
-.c-items li{display:flex;gap:16px;align-items:flex-start;padding:18px 0;border-bottom:1px solid rgba(0,0,0,0.25)}
+.c-items li{display:flex;gap:16px;align-items:center;padding:18px 0;border-bottom:1px solid rgba(0,0,0,0.25)}
 .c-items .c-ic{width:46px;height:46px;border-radius:12px;background:var(--black);display:grid;place-items:center;flex-shrink:0;box-shadow:0 8px 18px rgba(0,0,0,0.3)}
 .c-items .c-ic .ic{width:20px;height:20px;color:var(--orange)}
-.c-items span{display:block;font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--black);font-weight:800;margin-bottom:4px}
+.c-items span{display:block;font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:#FFFFFF;font-weight:800;margin-bottom:4px;text-shadow:0 2px 8px rgba(0,0,0,.45)}
 .c-items a,.c-items b{font-family:var(--font-head);font-weight:800;font-size:1rem;color:#FFFFFF;text-shadow:0 2px 8px rgba(0,0,0,0.4)}
 .c-items a:hover{color:var(--black)}
 
@@ -1428,95 +1428,14 @@ body > a[href="#"]:last-of-type:hover {
   .hero-brand-card,.agent-card,.chip-inner,.hv-glow{animation:none}
 }
 
-/* ============ FINAL ALL-DEVICE RESPONSIVE SAFETY LAYER ============ */
-/* Keep every layout inside the viewport, including the out-of-body checkout link. */
-html, body { max-width: 100%; }
-html { overflow-x: hidden; }
-body { min-width: 0; overflow-x: hidden; }
-.container { width: 100%; max-width: 100%; }
-
-/* Prevent long labels and form controls from forcing horizontal scrolling. */
-.brand-name, h1, h2, h3, h4, p, a, button, label, .stat p,
-.c-items a, .c-items b, .f-col a, .end-pill-card .pill-label {
-  overflow-wrap: anywhere;
+/* Improve contrast and readability for secondary copy and compact labels. */
+:root{
+  --muted:#E0E0EA;
+  --muted2:#C1C1D0;
 }
-.f-field input, .f-field select, .f-field textarea { min-width: 0; }
-
-/* Large displays: preserve readable line lengths and avoid oversized visual modules. */
-@media (min-width: 1440px) {
-  .container { max-width: 1320px; }
-  .hero { min-height: 88svh; }
-  .hero-visual { max-width: 560px; }
-}
-
-/* Tablet and smaller laptops. */
-@media (max-width: 1080px) {
-  .hero-grid { grid-template-columns: minmax(0, 1fr); }
-  .hero-left-intro { width: min(760px, 100%); margin-inline: auto; }
-  .hero-visual { width: min(620px, 100%); }
-  .about-grid, .contact-grid { grid-template-columns: minmax(0, 1fr); }
-  .about-copy { max-width: 70ch; }
-  .svc-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .end-solutions-panel { grid-template-columns: minmax(0, 1fr); }
-  .end-pills-col { max-width: 560px; }
-}
-
-@media (max-width: 920px) {
-  .nav-links, .nav-cta { display: none; }
-  .burger { display: flex; }
-  .hero { padding-top: 100px; }
-  .brand-real-row, .brand-talk-row { white-space: nowrap; }
-  .hero-brand-card { width: 100%; }
-  .radial-wrap { overflow: hidden; }
-  .ind-scroll { max-width: 100%; }
-}
-
-/* Phones: use one-column content and make controls easy to tap. */
-@media (max-width: 600px) {
-  .container { padding-inline: 16px; }
-  .section { padding-block: 58px; }
-  .hero { padding: 92px 0 34px; }
-  .hero-grid { gap: 26px; }
-  .hero-left-intro { text-align: center; }
-  .hero-motto-block { text-align: left; }
-  .hero-buttons-row { align-items: stretch; }
-  .btn-orange-pill, .btn-dark-pill, .contact-form .btn { width: 100%; justify-content: center; }
-  .hero-visual { min-height: 335px; }
-  .hv-card { width: min(280px, 76vw); }
-  .chip-csat { left: -4px; }
-  .chip-ticket { right: -4px; }
-  .chip-volume { left: -4px; }
-  .chip-global { right: -4px; }
-  .chip-inner { max-width: 46vw; }
-  .chip-txt { min-width: 0; }
-  .chip-txt strong, .chip-txt span { overflow-wrap: normal; white-space: nowrap; }
-  .stats-grid, .svc-grid, .f-grid, .gmap-legend, .radial-grid { grid-template-columns: 1fr; }
-  .stat + .stat, .stat:nth-child(3) { border-left: 0; }
-  .stat + .stat { border-top: 1px solid rgba(255,255,255,.1); }
-  .f-row { grid-template-columns: 1fr; gap: 0; }
-  .contact-form { padding: 22px 16px; }
-  .timeline { padding-inline: 16px; }
-  .gmap-panel { overflow-x: auto; }
-  .gmap { width: 620px; max-width: none; transform: none; }
-  .end-solutions-panel { padding: 26px 16px; }
-  .end-text-side { text-align: left; }
-  .end-pill-card { gap: 12px; padding-inline: 14px; }
-  .end-explore-btn { min-height: 54px; }
-  .f-bottom { align-items: flex-start; }
-  body > a[href="#"]:last-of-type {
-    display: flex;
-    width: calc(100% - 32px);
-    margin: 24px 16px;
-  }
-}
-
-/* Very narrow phones: prevent the logo from clipping at the edges. */
-@media (max-width: 380px) {
-  .brand-real-row { font-size: clamp(2.35rem, 13vw, 3.2rem); }
-  .brand-talk-row { font-size: clamp(2.25rem, 12.5vw, 3.1rem); }
-  .logo-faces-silhouette { width: 32px; height: 44px; margin-inline: 2px; }
-  .hero-visual { min-height: 315px; }
-  .chip-inner { padding: 7px; }
+:where(.agent-id span,.live,.agent-stats span,.chip-txt span,.stat p,.ind-num,.tl-num,.gl-item span,.f-field label,.f-note,.t-person span,.f-col a,.f-col li,.f-bottom p,.f-legal a,.careers-meta p){
+  font-size:max(.75rem,.8em);
+  line-height:1.4;
 }
 </style>
 </head>
@@ -1700,7 +1619,6 @@ body { min-width: 0; overflow-x: hidden; }
       <a href="#services">Services</a>
       <a href="#industries">Industries</a>
       <a href="#why">Why Us</a>
-      <a href="#careers">Careers</a>
       <a href="#contact">Contact</a>
     </nav>
     <a class="btn btn-primary btn-sm nav-cta magnetic" href="#contact">Get Free Consultation</a>
@@ -1716,7 +1634,6 @@ body { min-width: 0; overflow-x: hidden; }
   <a class="m-link" href="#services">Services</a>
   <a class="m-link" href="#industries">Industries</a>
   <a class="m-link" href="#why">Why Us</a>
-  <a class="m-link" href="#careers">Careers</a>
   <a class="m-link" href="#contact">Contact</a>
   <a class="btn btn-primary m-cta" href="#contact">Get Free Consultation</a>
 </div>
@@ -1858,8 +1775,9 @@ body { min-width: 0; overflow-x: hidden; }
         <h2>We Don't Just Outsource. We Build <span class="hl">Better Operations.<svg class="scribble" viewBox="0 0 220 12" preserveAspectRatio="none" aria-hidden="true"><path id="scribblePath" d="M2 9 C 40 3, 80 11, 120 6 S 190 4, 218 7"/></svg></span></h2>
       </div>
       <div class="about-copy" data-reveal data-delay=".15">
-        <p>REAL TALK exists because outsourcing has a reputation problem — and operations leaders deserve better. For over a decade we've rebuilt the model from the ground up: <strong>dedicated teams that learn your product</strong>, processes engineered around your customers, and technology that turns every interaction into measurable performance.</p>
-        <p>Instead of handing you headcount, we take ownership of outcomes. That means <strong>transparent reporting, quarterly performance reviews</strong>, and a partnership model where our teams win when yours do.</p>
+        <p>REAL TALK exists because outsourcing deserves a better standard. We bring together sharp people, smart systems, and relentless execution to build teams that actually understand your business.</p>
+        <p>We don't just fill seats. <strong>We build teams that perform.</strong> We don't just follow processes. <strong>We improve them.</strong> We don't just promise results. <strong>We take ownership of them.</strong></p>
+        <p><strong>Real People. Real Work. Real Results.</strong> So don't fall for fake callers.</p>
       </div>
     </div>
     <div class="node-chain" id="nodeChain">
@@ -1977,11 +1895,11 @@ body { min-width: 0; overflow-x: hidden; }
         <div class="ind-line" aria-hidden="true"></div>
         <div class="ind-items" data-reveal-group>
           <div class="ind-item"><span class="ind-node"></span>
-            <article class="ind-card card"><span class="ind-num">01</span><svg class="ic"><use href="#i-cart"/></svg><h3>E-commerce</h3>
-            <p class="ind-desc">Order support, returns management and seasonal scale-ups for high-volume stores.</p></article></div>
+            <article class="ind-card card"><span class="ind-num">01</span><svg class="ic"><use href="#i-sparkle"/></svg><h3>Janitorial</h3>
+            <p class="ind-desc">Commercial facility walkthrough bookings, RFP bids, and contract dispatch.</p></article></div>
           <div class="ind-item"><span class="ind-node"></span>
-            <article class="ind-card card"><span class="ind-num">02</span><svg class="ic"><use href="#i-health"/></svg><h3>Healthcare</h3>
-            <p class="ind-desc">Patient-first support, scheduling and claims assistance with privacy-aware teams.</p></article></div>
+            <article class="ind-card card"><span class="ind-num">02</span><svg class="ic"><use href="#i-sun"/></svg><h3>Solar</h3>
+            <p class="ind-desc">Utility-bill verified lead generation, roof qualification, and booked sits.</p></article></div>
           <div class="ind-item"><span class="ind-node"></span>
             <article class="ind-card card"><span class="ind-num">03</span><svg class="ic"><use href="#i-bank"/></svg><h3>FinTech</h3>
             <p class="ind-desc">KYC support, onboarding helpdesks and compliance-ready operations.</p></article></div>
@@ -2000,12 +1918,6 @@ body { min-width: 0; overflow-x: hidden; }
           <div class="ind-item"><span class="ind-node"></span>
             <article class="ind-card card"><span class="ind-num">08</span><svg class="ic"><use href="#i-bag"/></svg><h3>Retail</h3>
             <p class="ind-desc">Customer care, loyalty program support and catalogue management.</p></article></div>
-          <div class="ind-item"><span class="ind-node"></span>
-            <article class="ind-card card"><span class="ind-num">09</span><svg class="ic"><use href="#i-sparkle"/></svg><h3>Janitorial</h3>
-            <p class="ind-desc">Commercial facility walkthrough bookings, RFP bids, and contract dispatch.</p></article></div>
-          <div class="ind-item"><span class="ind-node"></span>
-            <article class="ind-card card"><span class="ind-num">10</span><svg class="ic"><use href="#i-sun"/></svg><h3>Solar</h3>
-            <p class="ind-desc">Utility-bill verified lead generation, roof qualification, and booked sits.</p></article></div>
         </div>
       </div>
     </div>
@@ -2038,10 +1950,10 @@ body { min-width: 0; overflow-x: hidden; }
       </svg>
     </div>
     <div class="gmap-legend" data-reveal-group>
-      <div class="gl-item card"><i></i><div><strong>North America</strong><span>2 delivery centers · 180+ specialists</span></div></div>
-      <div class="gl-item card"><i></i><div><strong>Europe</strong><span>1 hub · 120+ specialists</span></div></div>
-      <div class="gl-item card"><i></i><div><strong>Middle East</strong><span>1 center · 90+ specialists</span></div></div>
-      <div class="gl-item card"><i></i><div><strong>Asia-Pacific</strong><span>3 centers · 210+ specialists</span></div></div>
+      <div class="gl-item card"><i></i><div><strong>North America</strong></div></div>
+      <div class="gl-item card"><i></i><div><strong>Europe</strong></div></div>
+      <div class="gl-item card"><i></i><div><strong>Middle East</strong></div></div>
+      <div class="gl-item card"><i></i><div><strong>Asia-Pacific</strong></div></div>
     </div>
   </div>
 </section>
@@ -2067,70 +1979,13 @@ body { min-width: 0; overflow-x: hidden; }
   </div>
 </section>
 
-<!-- ============ TESTIMONIALS ============ -->
-<section class="section" id="testimonials">
-  <div class="container">
-    <div class="section-head center" data-reveal>
-      <span class="eyebrow">07 / Testimonials</span>
-      <h2>Real Conversations. <em>Real Results.</em></h2>
-    </div>
-    <div class="t-carousel" data-reveal>
-      <div class="t-viewport">
-        <div class="t-track" id="tTrack">
-          <article class="t-slide"><div class="t-card card">
-            <div class="t-stars"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></div>
-            <blockquote>"REAL TALK delivered over 80 verified solar sits on our calendar per week. Our closers stopped wasting time on unqualified prospects, and our pipeline doubled."</blockquote>
-            <div class="t-person"><div class="t-avatar">MC</div><div><strong>Marcus Cole</strong><span>VP of Sales, Solaria Energy</span></div></div>
-          </div></article>
-          <article class="t-slide"><div class="t-card card">
-            <div class="t-stars"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></div>
-            <blockquote>"Landing commercial office cleaning contracts is all about getting through the gatekeeper. REAL TALK scheduled 32 walkthroughs in our first month alone."</blockquote>
-            <div class="t-person"><div class="t-avatar">DL</div><div><strong>David Lawson</strong><span>Managing Director, Apex Commercial Clean</span></div></div>
-          </div></article>
-          <article class="t-slide"><div class="t-card card">
-            <div class="t-stars"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></div>
-            <blockquote>"Their technical support team outperforms our internal metrics. First-response resolution increased by 63% within the first 60 days."</blockquote>
-            <div class="t-person"><div class="t-avatar">AK</div><div><strong>Aisha Khan</strong><span>CTO, Cloudstack Labs</span></div></div>
-          </div></article>
-          <article class="t-slide"><div class="t-card card">
-            <div class="t-stars"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></div>
-            <blockquote>"Costs down 38%, lead velocity up. REAL TALK is by far the sharpest and most communicative BPO partner we've integrated."</blockquote>
-            <div class="t-person"><div class="t-avatar">MW</div><div><strong>Marcus Webb</strong><span>CFO, Northwind Retail</span></div></div>
-          </div></article>
-        </div>
-      </div>
-      <div class="t-controls">
-        <button class="t-btn" id="tPrev" aria-label="Previous testimonial"><svg style="transform:rotate(180deg)"><use href="#i-arrow"/></svg></button>
-        <div id="tDots"></div>
-        <button class="t-btn" id="tNext" aria-label="Next testimonial"><svg><use href="#i-arrow"/></svg></button>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ CAREERS ============ -->
-<section class="careers" id="careers">
-  <div class="container">
-    <div class="careers-inner" data-reveal>
-      <div>
-        <span class="eyebrow">Careers</span>
-        <h3>Build the future of global operations with us.</h3>
-      </div>
-      <div class="careers-meta">
-        <p><strong>14 open roles</strong> across sales, customer care, and operations</p>
-        <a class="btn btn-ghost magnetic" href="#contact">Join the Team <svg><use href="#i-arrow"/></svg></a>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- ============ FINAL CTA ============ -->
 <section class="cta-final">
   <div class="container cta-inner" data-reveal>
     <h2>Ready to Build a <em>High-Growth Pipeline?</em></h2>
     <p>Let's discuss how our specialized BPO teams can fill your sales calendar, streamline back office tasks, and cut operating overhead.</p>
     <a class="btn btn-primary btn-lg magnetic" href="#contact">Get Started Today <svg><use href="#i-arrow"/></svg></a>
-    <p class="cta-meta">Response within <b>24 hours</b> · Transparent pilot terms · www.realtalk.com</p>
+    <p class="cta-meta">Response within <b>24 hours</b> · Transparent pilot terms · www.realtalk.business</p>
   </div>
 </section>
 
@@ -2144,7 +1999,7 @@ body { min-width: 0; overflow-x: hidden; }
       <ul class="c-items">
         <li><div class="c-ic"><svg class="ic"><use href="#i-mail"/></svg></div><div><span>Email</span><a href="mailto:contact@realtalk.com">contact@realtalk.com</a></div></li>
         <li><div class="c-ic"><svg class="ic"><use href="#i-phone"/></svg></div><div><span>Phone</span><a href="tel:+13025550148">+1 (302) 555-0148</a></div></li>
-        <li><div class="c-ic"><svg class="ic"><use href="#i-pin"/></svg></div><div><span>Official Website</span><b>www.realtalk.com</b></div></li>
+        <li><div class="c-ic"><svg class="ic"><use href="#i-pin"/></svg></div><div><span>Official Website</span><b>www.realtalk.business</b></div></li>
         <li><div class="c-ic"><svg class="ic"><use href="#i-clock"/></svg></div><div><span>Working Hours</span><b>24/7/365 — Global Follow-The-Sun Ops</b></div></li>
       </ul>
     </div>
@@ -2189,7 +2044,7 @@ body { min-width: 0; overflow-x: hidden; }
         <h2>End-To-End BPO Engineered For Rapid Scale.</h2>
         <p>From dedicated customer service queues to data-backed performance dashboards and worldwide outsourcing reach, we provide the complete engine so you can focus exclusively on conversion and expansion.</p>
         <div style="font-family:var(--font-head); font-weight:800; font-size:1.15rem; color:var(--orange);">
-          www.realtalk.com
+          www.realtalk.business
         </div>
       </div>
 
@@ -2241,7 +2096,7 @@ body { min-width: 0; overflow-x: hidden; }
       <div class="f-col">
         <h4>Company</h4>
         <a href="#home">Home</a><a href="#about">About Us</a><a href="#why">Why Us</a>
-        <a href="#industries">Industries</a><a href="#careers">Careers</a><a href="#contact">Contact</a>
+        <a href="#industries">Industries</a><a href="#contact">Contact</a>
       </div>
       <div class="f-col">
         <h4>Solutions</h4>
@@ -2252,7 +2107,7 @@ body { min-width: 0; overflow-x: hidden; }
         <h4>Get in Touch</h4>
         <a href="mailto:contact@realtalk.com">contact@realtalk.com</a>
         <a href="tel:+13025550148">+1 (302) 555-0148</a>
-        <li>www.realtalk.com</li>
+        <li>www.realtalk.business</li>
         <li>24/7/365 Operations Desk</li>
       </div>
     </div>
