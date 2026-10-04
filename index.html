@@ -799,7 +799,7 @@ body.menu-open .m-cta{opacity:1;transform:none}
 /* ============ ABOUT SECTION ============ */
 .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(44px,6vw,80px);align-items:start}
 .about-copy{max-width:58ch}
-.about-copy p{color:#FFFFFF;font-size:1.02rem;font-weight:500;text-shadow:0 2px 10px rgba(0,0,0,0.3)}
+.about-copy p{color:#FFFFFF;font-size:1.02rem;font-weight:800;text-shadow:0 2px 10px rgba(0,0,0,0.3)}
 .about-copy p + p{margin-top:18px}
 .about-copy strong{color:#FFFFFF;font-weight:800}
 .hl{position:relative;display:inline-block}
@@ -816,6 +816,38 @@ body.menu-open .m-cta{opacity:1;transform:none}
 .chain-node:hover .chain-orb .ic{color:#FFFFFF}
 .chain-node h4{font-size:1.06rem;margin-bottom:6px;color:#fff}
 .chain-node p{font-size:.84rem;color:var(--muted)}
+
+/* ============ ABOUT FOLLOW-UP FEATURE ============ */
+.about-showcase{position:relative;z-index:2;padding:20px 0 80px}
+.about-showcase-panel{position:relative;isolation:isolate;overflow:hidden;display:grid;grid-template-columns:1.05fr 1fr;gap:clamp(28px,4vw,54px);padding:clamp(28px,4vw,52px);border:1px solid rgba(255,255,255,.14);border-radius:26px;background:linear-gradient(115deg,rgba(10,10,14,.98) 0 43%,rgba(10,10,14,.94) 43% 100%);box-shadow:0 28px 70px rgba(0,0,0,.55)}
+.about-showcase-panel::before{content:'';position:absolute;z-index:-1;inset:0 54% 0 39%;background:linear-gradient(135deg,transparent 0 43%,rgba(255,85,0,.16) 44% 46%,transparent 47% 55%,rgba(255,85,0,.08) 56% 58%,transparent 59%);pointer-events:none}
+.showcase-story{align-self:center}
+.showcase-story .eyebrow{margin-bottom:18px}
+.showcase-story h2{font-size:clamp(2rem,3.7vw,3.2rem);line-height:1.05;text-transform:uppercase;max-width:12ch}
+.showcase-story h2 span{color:var(--orange)}
+.showcase-story p{max-width:52ch;margin-top:22px;color:var(--muted);font-size:.94rem;line-height:1.7}
+.showcase-services{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:stretch}
+.showcase-card{padding:24px 20px;border:1px solid rgba(255,255,255,.14);border-radius:16px;background:rgba(18,18,24,.94);box-shadow:0 16px 36px rgba(0,0,0,.38)}
+.showcase-card:hover{border-color:var(--orange);transform:translateY(-5px)}
+.showcase-card-head{display:flex;align-items:center;gap:12px;margin-bottom:16px}
+.showcase-card-head .svc-icon{width:44px;height:44px;margin:0;flex-shrink:0}
+.showcase-card small{display:block;color:var(--muted2);font-family:var(--font-head);font-size:.62rem;font-weight:800;letter-spacing:.15em;text-transform:uppercase}
+.showcase-card h3{font-size:1rem;text-transform:uppercase}
+.showcase-card p{font-size:.79rem;line-height:1.6;color:var(--muted);min-height:76px}
+.showcase-card ul{margin:14px 0 20px}
+.showcase-card li{position:relative;padding-left:18px;margin:7px 0;color:var(--muted);font-size:.76rem;line-height:1.45}
+.showcase-card li::before{content:'✓';position:absolute;left:0;color:var(--orange);font-weight:900}
+.showcase-link{display:inline-flex;align-items:center;gap:8px;padding:9px 12px;border:1px solid var(--orange);color:#fff;font-family:var(--font-head);font-size:.65rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;transition:background .25s,color .25s}
+.showcase-link:hover{background:var(--orange);color:#fff}
+.showcase-link svg{width:14px;height:14px}
+.showcase-proof{grid-column:1/-1;display:grid;grid-template-columns:repeat(3,1fr) auto;align-items:center;gap:18px;padding-top:22px;border-top:1px solid rgba(255,255,255,.14)}
+.showcase-proof-item{display:flex;align-items:center;gap:10px}
+.showcase-proof-item svg{width:25px;height:25px;color:var(--orange);flex-shrink:0}
+.showcase-proof-item strong{display:block;font-family:var(--font-head);font-size:.72rem;line-height:1.3;text-transform:uppercase}
+.showcase-proof-item span{display:block;color:var(--muted2);font-size:.62rem;line-height:1.4}
+.showcase-tagline{max-width:190px;padding:10px 14px;background:var(--orange);color:#fff;font-family:var(--font-head);font-size:.75rem;font-weight:900;font-style:italic;line-height:1.3;text-align:center;text-transform:uppercase;transform:rotate(-2deg)}
+@media(max-width:920px){.about-showcase{padding:0 0 64px}.about-showcase-panel{grid-template-columns:1fr}.showcase-story h2{max-width:18ch}.showcase-proof{grid-template-columns:repeat(3,1fr)}.showcase-tagline{grid-column:1/-1;justify-self:center;max-width:none}}
+@media(max-width:560px){.about-showcase-panel{padding:24px 18px;border-radius:20px}.showcase-services{grid-template-columns:1fr}.showcase-card p{min-height:0}.showcase-proof{grid-template-columns:1fr;gap:14px}.showcase-tagline{justify-self:stretch}.showcase-story h2{font-size:2rem}}
 
 /* ============ SERVICES GRID ============ */
 .svc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
@@ -953,6 +985,7 @@ body.menu-open .m-cta{opacity:1;transform:none}
 .c-items li{display:flex;gap:16px;align-items:center;padding:18px 0;border-bottom:1px solid rgba(0,0,0,0.25)}
 .c-items .c-ic{width:46px;height:46px;border-radius:12px;background:var(--black);display:grid;place-items:center;flex-shrink:0;box-shadow:0 8px 18px rgba(0,0,0,0.3)}
 .c-items .c-ic .ic{width:20px;height:20px;color:var(--orange)}
+.c-items .c-ic.whatsapp .ic{color:var(--orange)}
 .c-items span{display:block;font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:#FFFFFF;font-weight:800;margin-bottom:4px;text-shadow:0 2px 8px rgba(0,0,0,.45)}
 .c-items a,.c-items b{font-family:var(--font-head);font-weight:800;font-size:1rem;color:#FFFFFF;text-shadow:0 2px 8px rgba(0,0,0,0.4)}
 .c-items a:hover{color:var(--black)}
@@ -1437,6 +1470,79 @@ body > a[href="#"]:last-of-type:hover {
   font-size:max(.75rem,.8em);
   line-height:1.4;
 }
+/* ============ FLUID LAYOUT & SMALL-SCREEN FINISHING ============ */
+*,*::before,*::after{min-width:0}
+html,body{width:100%;max-width:100%;overflow-x:clip}
+img,svg,canvas,video{max-width:100%}
+.container{width:100%}
+
+@media (max-width:1080px){
+  .f-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:32px}
+  .about-showcase-panel{gap:30px}
+  .showcase-services{gap:14px}
+  .showcase-card{padding:20px 16px}
+}
+
+@media (max-width:920px){
+  #nav.scrolled .nav-inner{height:66px}
+  .hero-grid,.about-grid,.contact-grid,.end-solutions-panel{grid-template-columns:minmax(0,1fr)}
+  .hero-left-intro,.hero-visual,.about-copy,.contact-form,.contact-info{width:100%;min-width:0}
+  .hero-visual{overflow:hidden}
+  .showcase-proof{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .showcase-tagline{grid-column:1/-1;justify-self:center}
+  .careers-inner{align-items:flex-start}
+  .gmap-legend{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+
+@media (max-width:680px){
+  .container{padding-inline:18px}
+  .section{padding-block:64px}
+  .section-head{margin-bottom:34px}
+  .stats-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .svc-grid,.radial-grid,.showcase-services{grid-template-columns:minmax(0,1fr)}
+  .f-grid{grid-template-columns:minmax(0,1fr);gap:26px}
+  .f-row{grid-template-columns:minmax(0,1fr);gap:0}
+  .showcase-proof{grid-template-columns:minmax(0,1fr)}
+  .showcase-tagline{grid-column:auto;justify-self:stretch}
+  .gmap-legend{grid-template-columns:minmax(0,1fr)}
+  .hero-visual{min-height:340px;aspect-ratio:1/1;overflow:hidden}
+  .hv-card{width:min(280px,78vw)}
+  .chip-csat{left:0}
+  .chip-ticket{right:0}
+  .chip-volume{left:0}
+  .chip-global{right:0}
+  .gmap{width:100%;min-width:0;max-width:100%;transform:none}
+  .gmap-panel{overflow:hidden}
+  .contact-form{padding:24px 18px}
+  .contact-form .btn{width:100%;justify-content:center}
+  .c-items li{align-items:flex-start;gap:12px}
+  .c-items li>div:last-child{min-width:0;overflow-wrap:anywhere}
+  .c-items a,.c-items b{font-size:.92rem}
+  .f-bottom{align-items:flex-start;flex-direction:column}
+  .f-legal{gap:14px;flex-wrap:wrap}
+  .end-solutions-panel{gap:28px}
+  .modal-panel{padding:32px 22px}
+  body> a[href="#"]:last-of-type{max-width:calc(100% - 32px);margin:20px 16px}
+}
+
+@media (max-width:380px){
+  .container{padding-inline:14px}
+  .brand{gap:7px}
+  .brand svg{width:27px;height:27px}
+  .brand-name{font-size:1.05rem}
+  #nav .nav-inner{padding-inline:14px}
+  .hero-brand-card .brand-real-row{font-size:clamp(2.35rem,13vw,3.1rem);letter-spacing:-1px}
+  .hero-brand-card .brand-talk-row{font-size:clamp(2.25rem,12.5vw,3rem);gap:3px}
+  .hero-brand-card .logo-faces-silhouette{width:32px;height:44px}
+  .hero-brand-card .brand-slogan-bottom{font-size:.66rem}
+  .hero-visual{min-height:310px}
+  .chip-inner{padding:7px;gap:5px}
+  .chip-txt strong{font-size:.52rem}
+  .agent-card{padding:13px}
+  .stat{padding-inline:6px}
+  .end-pill-card{padding:13px 14px}
+  .btn{white-space:normal}
+}
 </style>
 </head>
 <body>
@@ -1567,6 +1673,10 @@ body > a[href="#"]:last-of-type:hover {
   <symbol id="i-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
     <rect x="2" y="4.5" width="20" height="15" rx="2.5"/><path d="m2 8 10 6 10-6"/>
   </symbol>
+  <symbol id="i-whatsapp" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M20.5 11.7a8.5 8.5 0 0 1-12.6 7.4L3 20.5l1.5-4.7a8.5 8.5 0 1 1 16-4.1Z"/>
+    <path d="M8.3 7.8c.2-.5.5-.5.8-.5h.5c.2 0 .4.1.5.4l.7 1.7c.1.2.1.4-.1.6l-.5.6c-.2.2-.2.4 0 .6.5.9 1.2 1.6 2.1 2.1.2.1.4.1.6-.1l.6-.7c.2-.2.4-.2.6-.1l1.7.8c.3.1.4.3.4.5 0 .4-.2 1.1-.6 1.4-.4.4-1 .6-1.6.6-.5 0-1.2-.2-2.1-.6-1.1-.5-2.1-1.4-3-2.3-.8-.9-1.4-1.9-1.6-2.7-.3-.8-.1-1.7.2-2.3Z"/>
+  </symbol>
   <symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
     <path d="M12 21.5s-7-5.4-7-11.3A7 7 0 0 1 19 10.2c0 5.9-7 11.3-7 11.3z"/><circle cx="12" cy="10" r="2.6"/>
   </symbol>
@@ -1670,7 +1780,7 @@ body > a[href="#"]:last-of-type:hover {
         </p>
 
         <div class="motto-quote-box">
-          <p>fewer meetings, better prospect, better results because unqualified opportunity can be worth more than 20 empty appointments.</p>
+          <p>fewer meetings, better prospect, better results because one qualified opportunity can be worth more than 20 empty appointments.</p>
         </div>
 
         <div class="hero-buttons-row">
@@ -1758,9 +1868,9 @@ body > a[href="#"]:last-of-type:hover {
 <section class="stats" aria-label="Company statistics">
   <div class="container">
     <div class="stats-grid" data-reveal-group>
-      <div class="stat"><div class="stat-num" data-count="10" data-suffix="+">10+</div><p>Years Experience</p></div>
-      <div class="stat"><div class="stat-num" data-count="500" data-suffix="+">500+</div><p>Professionals</p></div>
-      <div class="stat"><div class="stat-num" data-count="50" data-suffix="+">50+</div><p>Global Clients</p></div>
+      <div class="stat"><div class="stat-num" data-count="8.5" data-suffix="+">8.5+</div><p>Years Experience</p></div>
+      <div class="stat"><div class="stat-num" data-count="50" data-suffix="+">50+</div><p>Professional Callers</p></div>
+      <div class="stat"><div class="stat-num" data-count="20" data-suffix="+">20+</div><p>Global Clients</p></div>
       <div class="stat"><div class="stat-num" data-count="99" data-suffix="%">99%</div><p>Client Satisfaction</p></div>
     </div>
   </div>
@@ -1772,7 +1882,7 @@ body > a[href="#"]:last-of-type:hover {
     <div class="about-grid">
       <div data-reveal>
         <span class="eyebrow">01 / About Us</span>
-        <h2>We Don't Just Outsource. We Build <span class="hl">Better Operations.<svg class="scribble" viewBox="0 0 220 12" preserveAspectRatio="none" aria-hidden="true"><path id="scribblePath" d="M2 9 C 40 3, 80 11, 120 6 S 190 4, 218 7"/></svg></span></h2>
+        <h2>Transform Conversations. <span class="hl">Boost Your Revenue.<svg class="scribble" viewBox="0 0 220 12" preserveAspectRatio="none" aria-hidden="true"><path id="scribblePath" d="M2 9 C 40 3, 80 11, 120 6 S 190 4, 218 7"/></svg></span></h2>
       </div>
       <div class="about-copy" data-reveal data-delay=".15">
         <p>REAL TALK exists because outsourcing deserves a better standard. We bring together sharp people, smart systems, and relentless execution to build teams that actually understand your business.</p>
@@ -1787,6 +1897,45 @@ body > a[href="#"]:last-of-type:hover {
         <div class="chain-node"><div class="chain-orb"><svg class="ic"><use href="#i-layers"/></svg></div><h4>Process</h4><p>Engineered workflows &amp; QA</p></div>
         <div class="chain-node"><div class="chain-orb"><svg class="ic"><use href="#i-cpu"/></svg></div><h4>Technology</h4><p>Automation &amp; analytics</p></div>
         <div class="chain-node"><div class="chain-orb"><svg class="ic"><use href="#i-chart"/></svg></div><h4>Results</h4><p>Measured &amp; improved</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ABOUT FOLLOW-UP: INDUSTRY PIPELINES ============ -->
+<section class="about-showcase" aria-label="Business development pipelines">
+  <div class="container">
+    <div class="about-showcase-panel">
+      <div class="showcase-story">
+        <span class="eyebrow">Business Growth</span>
+        <h2>We Don't Just Make Calls. <span>We Create Opportunities.</span></h2>
+        <p>REAL TALK helps growth-focused businesses turn real conversations into qualified opportunities. Our dedicated teams understand your market, speak with decision-makers, and create appointments your sales team can actually close.</p>
+      </div>
+      <div class="showcase-services">
+        <article class="showcase-card card">
+          <div class="showcase-card-head">
+            <div class="svc-icon"><svg class="ic"><use href="#i-building"/></svg></div>
+            <div><small>Commercial</small><h3>Cleaning</h3></div>
+          </div>
+          <p>We help cleaning companies turn cold prospects into qualified walkthrough opportunities.</p>
+          <ul><li>Facility-based prospecting</li><li>Decision-maker conversations</li><li>Qualified walkthrough appointments</li><li>Call verification and follow-up</li></ul>
+          <a class="showcase-link" href="#contact">Build My Cleaning Pipeline <svg><use href="#i-arrow"/></svg></a>
+        </article>
+        <article class="showcase-card card">
+          <div class="showcase-card-head">
+            <div class="svc-icon"><svg class="ic"><use href="#i-sun"/></svg></div>
+            <div><small>Residential</small><h3>Solar</h3></div>
+          </div>
+          <p>We help solar companies create homeowner conversations and business-ready solar opportunities.</p>
+          <ul><li>Targeted homeowner prospecting</li><li>Lead qualification</li><li>Appointment setting</li><li>Call verification and support</li></ul>
+          <a class="showcase-link" href="#contact">Build My Solar Pipeline <svg><use href="#i-arrow"/></svg></a>
+        </article>
+      </div>
+      <div class="showcase-proof">
+        <div class="showcase-proof-item"><svg><use href="#i-usercheck"/></svg><div><strong>Real People</strong><span>People who actually answer.</span></div></div>
+        <div class="showcase-proof-item"><svg><use href="#i-users"/></svg><div><strong>Real Conversations</strong><span>Not scripted. Not robotic.</span></div></div>
+        <div class="showcase-proof-item"><svg><use href="#i-target"/></svg><div><strong>Real Opportunities</strong><span>Appointments your team can close.</span></div></div>
+        <div class="showcase-tagline">Don't fall for fake callers.</div>
       </div>
     </div>
   </div>
@@ -1901,23 +2050,14 @@ body > a[href="#"]:last-of-type:hover {
             <article class="ind-card card"><span class="ind-num">02</span><svg class="ic"><use href="#i-sun"/></svg><h3>Solar</h3>
             <p class="ind-desc">Utility-bill verified lead generation, roof qualification, and booked sits.</p></article></div>
           <div class="ind-item"><span class="ind-node"></span>
-            <article class="ind-card card"><span class="ind-num">03</span><svg class="ic"><use href="#i-bank"/></svg><h3>FinTech</h3>
-            <p class="ind-desc">KYC support, onboarding helpdesks and compliance-ready operations.</p></article></div>
-          <div class="ind-item"><span class="ind-node"></span>
-            <article class="ind-card card"><span class="ind-num">04</span><svg class="ic"><use href="#i-cloud"/></svg><h3>SaaS &amp; Tech</h3>
+            <article class="ind-card card"><span class="ind-num">03</span><svg class="ic"><use href="#i-cloud"/></svg><h3>SaaS &amp; Tech</h3>
             <p class="ind-desc">Technical support, customer success and churn-reduction operations.</p></article></div>
           <div class="ind-item"><span class="ind-node"></span>
-            <article class="ind-card card"><span class="ind-num">05</span><svg class="ic"><use href="#i-signal"/></svg><h3>Telecom</h3>
-            <p class="ind-desc">High-volume care, retention and win-back campaigns at carrier scale.</p></article></div>
-          <div class="ind-item"><span class="ind-node"></span>
-            <article class="ind-card card"><span class="ind-num">06</span><svg class="ic"><use href="#i-plane"/></svg><h3>Hospitality</h3>
-            <p class="ind-desc">24/7 multilingual booking support and guest-experience teams.</p></article></div>
-          <div class="ind-item"><span class="ind-node"></span>
-            <article class="ind-card card"><span class="ind-num">07</span><svg class="ic"><use href="#i-building"/></svg><h3>Real Estate</h3>
+            <article class="ind-card card"><span class="ind-num">04</span><svg class="ic"><use href="#i-building"/></svg><h3>Real Estate</h3>
             <p class="ind-desc">Lead qualification, appointment setting and transaction back-office.</p></article></div>
           <div class="ind-item"><span class="ind-node"></span>
-            <article class="ind-card card"><span class="ind-num">08</span><svg class="ic"><use href="#i-bag"/></svg><h3>Retail</h3>
-            <p class="ind-desc">Customer care, loyalty program support and catalogue management.</p></article></div>
+            <article class="ind-card card"><span class="ind-num">05</span><svg class="ic"><use href="#i-health"/></svg><h3>Healthcare</h3>
+            <p class="ind-desc">Patient support, appointment scheduling, and healthcare administration.</p></article></div>
         </div>
       </div>
     </div>
@@ -1997,9 +2137,10 @@ body > a[href="#"]:last-of-type:hover {
       <h2>Let's Start a <em>Conversation</em></h2>
       <p>Tell us about your volume goals, lead criteria, or current bottlenecks — we'll provide a clear operational blueprint.</p>
       <ul class="c-items">
-        <li><div class="c-ic"><svg class="ic"><use href="#i-mail"/></svg></div><div><span>Email</span><a href="mailto:contact@realtalk.com">contact@realtalk.com</a></div></li>
-        <li><div class="c-ic"><svg class="ic"><use href="#i-phone"/></svg></div><div><span>Phone</span><a href="tel:+13025550148">+1 (302) 555-0148</a></div></li>
-        <li><div class="c-ic"><svg class="ic"><use href="#i-pin"/></svg></div><div><span>Official Website</span><b>www.realtalk.business</b></div></li>
+        <li><div class="c-ic"><svg class="ic"><use href="#i-mail"/></svg></div><div><span>Email</span><a href="mailto:info@realtalk.business">info@realtalk.business</a></div></li>
+            <li><div class="c-ic"><svg class="ic"><use href="#i-phone"/></svg></div><div><span>Phone</span><a href="tel:+13025550148">+1 (302) 555-0148</a></div></li>
+    <li><div class="c-ic whatsapp"><svg class="ic"><use href="#i-whatsapp"/></svg></div><div><span>WhatsApp Business</span><a href="https://wa.me/8801344800685" target="_blank" rel="noopener noreferrer">+880 1344-800685</a></div></li>
+    <li><div class="c-ic"><svg class="ic"><use href="#i-pin"/></svg></div><div><span>Official Website</span><b>www.realtalk.business</b></div></li>
         <li><div class="c-ic"><svg class="ic"><use href="#i-clock"/></svg></div><div><span>Working Hours</span><b>24/7/365 — Global Follow-The-Sun Ops</b></div></li>
       </ul>
     </div>
@@ -2105,7 +2246,7 @@ body > a[href="#"]:last-of-type:hover {
       </div>
       <div class="f-col">
         <h4>Get in Touch</h4>
-        <a href="mailto:contact@realtalk.com">contact@realtalk.com</a>
+        <a href="mailto:info@realtalk.business">info@realtalk.business</a>
         <a href="tel:+13025550148">+1 (302) 555-0148</a>
         <li>www.realtalk.business</li>
         <li>24/7/365 Operations Desk</li>
@@ -2180,7 +2321,7 @@ qsa('[data-count]').forEach(el=>{
   if(!hasGsap||reduced) return;
   ScrollTrigger.create({trigger:el,start:'top 88%',once:true,onEnter(){
     const o={v:0};
-    gsap.to(o,{v:target,duration:1.8,ease:'power2.out',onUpdate:()=>el.textContent=Math.round(o.v)+suffix});
+    gsap.to(o,{v:target,duration:1.8,ease:'power2.out',onUpdate:()=>el.textContent=(Number.isInteger(target)?Math.round(o.v):o.v.toFixed(1))+suffix});
   }});
 });
 
