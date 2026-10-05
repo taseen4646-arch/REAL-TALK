@@ -197,69 +197,63 @@ body.menu-open .m-cta{opacity:1;transform:none}
   width:100%;
 }
 
-/* BIG ANIMATED LOGO CARD (IMAGE 2) */
 .hero-brand-card {
-  background: linear-gradient(135deg, #7842db 0%, #a453cd 42%, #ff6b3d 82%, #ff5500 100%);
-  border-radius: 26px;
-  padding: clamp(28px, 4vw, 42px);
-  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.55), 0 0 45px rgba(120, 66, 219, 0.35);
+  background: transparent;
+  border-color: transparent;
+  box-shadow: none;
+  text-align: center;
   position: relative;
-  overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  animation: logoCardFloat 6s ease-in-out infinite alternate;
-  transform-style: preserve-3d;
-  perspective: 1000px;
+  overflow: visible;
+  animation: logoCardFloat 6s ease-in-out infinite alternate, logoAmbientGlow 5s ease-in-out infinite;
 }
 @keyframes logoCardFloat {
   0% { transform: translateY(0) rotate(-0.5deg); }
   100% { transform: translateY(-10px) rotate(0.5deg); }
 }
 
-.hero-brand-card::after {
+.hero-brand-card::before {
   content: '';
   position: absolute;
-  top: -50%;
-  left: -60%;
-  width: 50%;
-  height: 200%;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.22), transparent);
-  transform: rotate(25deg);
-  animation: logoCardShine 7s ease-in-out infinite;
-}
-@keyframes logoCardShine {
-  0%, 60% { left: -60%; }
-  100% { left: 140%; }
+  inset: -18%;
+  z-index: -1;
+  background:
+    radial-gradient(circle at 24% 35%, rgba(255, 174, 78, .9), transparent 34%),
+    linear-gradient(135deg, #ff7a00 0%, #ff5500 46%, #ff2d00 100%);
+  filter: blur(42px);
+  opacity: .7;
+  transform: skewX(-8deg);
+  animation: orangeGlowShift 8s ease-in-out infinite alternate;
 }
 
 .brand-real-row {
   display: flex;
   align-items: baseline;
+  justify-content: center;
   line-height: 0.95;
   font-family: var(--font-head);
   font-weight: 900;
   font-size: clamp(4.4rem, 8.5vw, 6.8rem);
   letter-spacing: -2px;
   color: #FFFFFF;
+  animation: logoLettersIn 1s var(--ease) both;
+  text-shadow: 0 5px 22px rgba(0, 0, 0, .28);
 }
 .brand-real-row .a-mint {
   color: #55f3a9;
   display: inline-block;
   transform: scale(1.04);
   text-shadow: 0 0 25px rgba(85, 243, 169, 0.5);
+  animation: mintLetterPulse 2.4s ease-in-out .8s infinite;
 }
 
-/* Playful running R character */
 .running-r {
   display: inline-block;
   position: relative;
   animation: rocketR 2.4s var(--ease) both;
   transform-origin: center bottom;
 }
-
-/* Hide the old legs without changing the existing markup. */
 .running-r .r-leg { display: none; }
 
-/* Rocket exhaust during the flight and landing. */
 .running-r::before,
 .running-r::after {
   content: '';
@@ -277,7 +271,6 @@ body.menu-open .m-cta{opacity:1;transform:none}
   animation: rocketFlame 2.4s ease-in-out both;
 }
 
-/* Twin exhaust flames leave from the R's two lower ends. */
 .running-r::before { left: 16%; }
 .running-r::after { right: 13%; animation-delay: .06s; }
 
@@ -295,18 +288,11 @@ body.menu-open .m-cta{opacity:1;transform:none}
   74% { opacity: .9; transform: scale(1.05, .9); }
   88%, 100% { opacity: 0; transform: scale(.35, .1); }
 }
-@keyframes legRunLeft {
-  from { transform: rotate(42deg); }
-  to { transform: rotate(-35deg); }
-}
-@keyframes legRunRight {
-  from { transform: rotate(-35deg); }
-  to { transform: rotate(42deg); }
-}
 
 .brand-talk-row {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
   line-height: 0.9;
   font-family: var(--font-head);
@@ -314,9 +300,11 @@ body.menu-open .m-cta{opacity:1;transform:none}
   font-size: clamp(4.2rem, 8vw, 6.4rem);
   color: #0E0E14;
   margin-top: 4px;
+  animation: logoLettersIn 1s var(--ease) both;
+  animation-delay: .16s;
+  text-shadow: 0 5px 22px rgba(0, 0, 0, .28);
 }
 
-/* Face Silhouette Logo Icon in 'talk' */
 .logo-faces-silhouette {
   position: relative;
   width: clamp(52px, 6vw, 70px);
@@ -325,7 +313,6 @@ body.menu-open .m-cta{opacity:1;transform:none}
   margin: 0 4px;
 }
 
-/* Stylized hair framing the two conversational faces. */
 .logo-faces-silhouette::before,
 .logo-faces-silhouette::after {
   content: '';
@@ -355,7 +342,11 @@ body.menu-open .m-cta{opacity:1;transform:none}
   width: 50%;
   height: 100%;
   background: #0E0E14;
+  transform-origin: center bottom;
+  animation: faceTalk 1.15s ease-in-out infinite;
 }
+.logo-faces-silhouette .f-right { animation-delay: .2s; }
+
 .logo-faces-silhouette .f-left {
   left: 0;
   clip-path: polygon(0 0, 100% 0, 85% 35%, 65% 45%, 85% 60%, 100% 75%, 70% 100%, 0 100%);
@@ -374,8 +365,9 @@ body.menu-open .m-cta{opacity:1;transform:none}
   border-radius: 50%;
   top: 32%;
 }
+.logo-faces-silhouette .f-left::after { right: 6px; }
+.logo-faces-silhouette .f-right::after { left: 6px; }
 
-/* Conversational mouth animation: each face changes mouth height and width independently. */
 .logo-faces-silhouette .f-left::before,
 .logo-faces-silhouette .f-right::before {
   content: '';
@@ -390,7 +382,6 @@ body.menu-open .m-cta{opacity:1;transform:none}
   transform-origin: center;
   animation: realisticMouthTalk 1.05s ease-in-out infinite;
 }
-
 .logo-faces-silhouette .f-left::before { right: 3px; }
 .logo-faces-silhouette .f-right::before { left: 3px; animation-delay: -.42s; }
 
@@ -404,25 +395,12 @@ body.menu-open .m-cta{opacity:1;transform:none}
   82% { transform: scale(.98, .58); border-radius: 44%; }
 }
 
-/* Subtle speaking motion for the two faces in “talk”. */
-.logo-faces-silhouette .f-left,
-.logo-faces-silhouette .f-right {
-  transform-origin: center bottom;
-  animation: faceTalk 1.15s ease-in-out infinite;
-}
-
-.logo-faces-silhouette .f-right {
-  animation-delay: .2s;
-}
-
 @keyframes faceTalk {
   0%, 100% { transform: scaleY(1) translateY(0); }
   25% { transform: scaleY(.96) translateY(2px); }
   50% { transform: scaleY(1.03) translateY(-1px); }
   75% { transform: scaleY(.98) translateY(1px); }
 }
-.logo-faces-silhouette .f-left::after { right: 6px; }
-.logo-faces-silhouette .f-right::after { left: 6px; }
 
 .brand-slogan-bottom {
   font-family: var(--font-head);
@@ -432,12 +410,30 @@ body.menu-open .m-cta{opacity:1;transform:none}
   margin-top: 14px;
   letter-spacing: 0.5px;
   text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+  animation: sloganReveal 1s var(--ease) .42s both;
 }
 
-/* IMAGE 3 MOTTO CONTAINER */
-.hero-motto-block {
-  margin-top: 26px;
+@keyframes logoLettersIn {
+  from { opacity: 0; transform: translateY(22px) scale(.94); filter: blur(7px); }
+  to { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
 }
+@keyframes mintLetterPulse {
+  0%, 100% { transform: scale(1.04) rotate(0); filter: brightness(1); }
+  50% { transform: scale(1.13) rotate(-3deg); filter: brightness(1.2) drop-shadow(0 0 16px rgba(85, 243, 169, .8)); }
+}
+@keyframes sloganReveal {
+  from { opacity: 0; letter-spacing: 5px; }
+  to { opacity: 1; letter-spacing: .5px; }
+}
+@keyframes logoAmbientGlow {
+  50% { filter: drop-shadow(0 18px 32px rgba(255, 85, 0, .25)); }
+}
+@keyframes orangeGlowShift {
+  from { transform: translateX(-3%) skewX(-8deg) scale(.96); opacity: .58; }
+  to { transform: translateX(3%) skewX(-8deg) scale(1.04); opacity: .82; }
+}
+
+.hero-motto-block { margin-top: 26px; }
 .motto-lead {
   font-size: 1.05rem;
   color: #FFFFFF;
@@ -513,9 +509,7 @@ body.menu-open .m-cta{opacity:1;transform:none}
   transform: translateY(-2px);
 }
 
-/* ========================================================
-   RESTORED HERO VISUAL MODULE (ANIMATED RADAR & CHIPS)
-   ======================================================== */
+/* ============ RESTORED HERO VISUAL MODULE ============ */
 .hero-visual{
   position: relative;
   width: 100%;
@@ -848,8 +842,6 @@ body.menu-open .m-cta{opacity:1;transform:none}
 .showcase-tagline{max-width:190px;padding:10px 14px;background:var(--orange);color:#fff;font-family:var(--font-head);font-size:.75rem;font-weight:900;font-style:italic;line-height:1.3;text-align:center;text-transform:uppercase;transform:rotate(-2deg)}
 .about-copy p:last-of-type{text-align:center}
 .about-copy .about-sticker{max-width:190px;margin:20px auto 0}
-@media(max-width:920px){.about-showcase{padding:0 0 64px}.about-showcase-panel{grid-template-columns:1fr}.showcase-story h2{max-width:18ch}.showcase-proof{grid-template-columns:repeat(3,1fr)}.showcase-tagline{grid-column:1/-1;justify-self:center;max-width:none}}
-@media(max-width:560px){.about-showcase-panel{padding:24px 18px;border-radius:20px}.showcase-services{grid-template-columns:1fr}.showcase-card p{min-height:0}.showcase-proof{grid-template-columns:1fr;gap:14px}.showcase-tagline{justify-self:stretch}.showcase-story h2{font-size:2rem}}
 
 /* ============ SERVICES GRID ============ */
 .svc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
@@ -885,12 +877,12 @@ body.menu-open .m-cta{opacity:1;transform:none}
 .core-inner{position:relative;z-index:1;width:110px;height:110px;border-radius:50%;background:var(--black);border:2px solid #FFFFFF;box-shadow:0 0 38px rgba(0,0,0,.6);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px}
 .core-inner svg{width:32px;height:32px;color:var(--orange)}
 .core-inner span{font-family:var(--font-head);font-weight:800;font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:#fff;line-height:1.4;padding:0 8px}
- .radial-node{position:absolute;width:220px;min-height:160px;height:auto;margin-left:-110px;margin-top:-80px;padding:18px;text-align:center}
+.radial-node{position:absolute;width:220px;min-height:160px;height:auto;margin-left:-110px;margin-top:-80px;padding:18px;text-align:center}
 .radial-node .svc-icon{width:42px;height:42px;margin:0 auto 10px;border-radius:11px}
 .radial-node h4{font-size:1rem;margin-bottom:5px;color:#fff}
 .radial-node p{font-size:.76rem;color:var(--muted);line-height:1.55}
 
-/* ============ INDUSTRIES (HORIZONTAL DRAG RAIL) ============ */
+/* ============ INDUSTRIES ============ */
 .ind-hint{display:flex;justify-content:flex-end;align-items:center;gap:9px;margin-bottom:24px;font-family:var(--font-head);font-weight:800;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--black)}
 .ind-hint svg{width:16px;height:16px;color:var(--black)}
 .ind-scroll{overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x proximity;padding:4px 4px 18px;cursor:grab}
@@ -942,36 +934,6 @@ body.menu-open .m-cta{opacity:1;transform:none}
 .tl-step h3{font-size:1.1rem;margin-bottom:8px;color:#fff}
 .tl-step p{font-size:.84rem;line-height:1.6;color:var(--muted)}
 
-/* ============ TESTIMONIALS ============ */
-.t-carousel{max-width:800px;margin:0 auto}
-.t-viewport{overflow:hidden;border-radius:22px}
-.t-track{display:flex;transition:transform .65s var(--ease)}
-.t-slide{flex:0 0 100%;padding:6px}
-.t-card{position:relative;padding:clamp(32px,5vw,56px);border-radius:22px;overflow:hidden;background:var(--black);border:1px solid var(--line)}
-.t-card::before{content:'\201C';position:absolute;top:6px;right:26px;font-family:var(--font-head);font-size:7rem;line-height:1;color:rgba(255,255,255,.08);font-weight:900}
-.t-stars{display:flex;gap:4px;margin-bottom:22px}
-.t-stars svg{width:18px;height:18px;color:var(--orange)}
-.t-card blockquote{font-size:clamp(1.05rem,1.5vw,1.18rem);line-height:1.75;margin-bottom:28px;color:#fff;font-weight:500}
-.t-person{display:flex;align-items:center;gap:16px}
-.t-avatar{width:54px;height:54px;border-radius:50%;display:grid;place-items:center;flex-shrink:0;font-family:var(--font-head);font-weight:900;color:#fff;background:var(--orange)}
-.t-person strong{display:block;font-family:var(--font-head);font-weight:800;font-size:.98rem;color:#fff}
-.t-person span{font-size:.82rem;color:var(--muted)}
-.t-controls{display:flex;align-items:center;justify-content:center;gap:22px;margin-top:30px}
-.t-btn{width:46px;height:46px;border-radius:50%;background:var(--black);border:1px solid var(--line);display:grid;place-items:center;color:#fff;transition:all .3s}
-.t-btn:hover{background:#FFFFFF;color:var(--black);transform:scale(1.08)}
-.t-btn svg{width:18px;height:18px}
-#tDots{display:flex;gap:9px}
-.t-dot{width:10px;height:10px;border-radius:50%;background:rgba(0,0,0,0.3);transition:.35s;padding:0}
-.t-dot.on{background:var(--black);transform:scale(1.3)}
-
-/* ============ CAREERS ============ */
-.careers{padding-bottom:clamp(80px,9vw,120px)}
-.careers-inner{display:flex;align-items:center;justify-content:space-between;gap:30px;flex-wrap:wrap;padding:clamp(30px,4vw,48px) clamp(26px,4vw,52px);border:1px solid var(--line);border-radius:24px;background:var(--black);box-shadow:0 20px 50px rgba(0,0,0,0.5)}
-.careers h3{font-size:clamp(1.25rem,2.2vw,1.6rem);line-height:1.35;max-width:500px;margin:0;color:#fff}
-.careers-meta{display:flex;align-items:center;gap:26px;flex-wrap:wrap}
-.careers-meta p{font-size:.92rem;color:var(--muted);font-weight:500}
-.careers-meta strong{color:var(--orange)}
-
 /* ============ FINAL CTA ============ */
 .cta-final{position:relative;overflow:hidden;padding:clamp(90px,11vw,150px) 0;text-align:center}
 .cta-inner{position:relative}
@@ -987,7 +949,6 @@ body.menu-open .m-cta{opacity:1;transform:none}
 .c-items li{display:flex;gap:16px;align-items:center;padding:18px 0;border-bottom:1px solid rgba(0,0,0,0.25)}
 .c-items .c-ic{width:46px;height:46px;border-radius:12px;background:var(--black);display:grid;place-items:center;flex-shrink:0;box-shadow:0 8px 18px rgba(0,0,0,0.3)}
 .c-items .c-ic .ic{width:20px;height:20px;color:var(--orange)}
-.c-items .c-ic.whatsapp .ic{color:var(--orange)}
 .c-items span{display:block;font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:#FFFFFF;font-weight:800;margin-bottom:4px;text-shadow:0 2px 8px rgba(0,0,0,.45)}
 .c-items a,.c-items b{font-family:var(--font-head);font-weight:800;font-size:1rem;color:#FFFFFF;text-shadow:0 2px 8px rgba(0,0,0,0.4)}
 .c-items a:hover{color:var(--black)}
@@ -1005,9 +966,7 @@ body.menu-open .m-cta{opacity:1;transform:none}
 .f-field .bad{border-color:#ff4444;box-shadow:0 0 0 3px rgba(255,68,68,.3)}
 .f-note{margin-top:16px;font-size:.82rem;color:var(--muted2)}
 
-/* ========================================================
-   NEW SECTION: IMAGE 1 PILL STACK MOVED TO THE END OF SITE
-   ======================================================== */
+/* ============ END SOLUTIONS ============ */
 .end-solutions-section {
   padding: 80px 0 110px;
   position: relative;
@@ -1146,132 +1105,6 @@ footer{background:var(--black);padding:70px 0 30px;border-top:3px solid #000;pos
 .modal-close:hover{color:#fff;background:var(--orange)}
 .modal-close svg{width:15px;height:15px}
 
-/* ============ STANDALONE CHECKOUT BUTTON ============ */
-body > a[href="#"]:last-of-type {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  margin: 30px 20px;
-  padding: 14px 30px;
-  background: var(--black);
-  color: #FFFFFF;
-  font-family: var(--font-head);
-  font-weight: 800;
-  font-size: 1rem;
-  border-radius: var(--rs);
-  border: 2px solid var(--black);
-  box-shadow: 0 10px 25px rgba(0,0,0,.4);
-  transition: all .3s var(--ease);
-  text-decoration: none;
-  cursor: pointer;
-  position: relative;
-  z-index: 20;
-}
-body > a[href="#"]:last-of-type:hover {
-  color: #FFFFFF !important;
-  background: #FF2A2A;
-  border-color: #FF2A2A;
-  box-shadow: 0 10px 28px rgba(255,42,42,.5);
-  transform: translateY(-2px);
-}
-
-/* ============ LOGO POLISH: TRANSPARENT CARD + ORANGE GLOW ============ */
-.hero-brand-card {
-  background: transparent;
-  border-color: transparent;
-  box-shadow: none;
-  text-align: center;
-  animation: logoCardFloat 6s ease-in-out infinite alternate, logoAmbientGlow 5s ease-in-out infinite;
-}
-
-  .hero-brand-card .brand-real-row,
-  .hero-brand-card .brand-talk-row {
-  justify-content: center;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .running-r,
-  .running-r::before,
-  .running-r::after,
-  .r-leg-left,
-  .r-leg-right { animation: none; transform: none; }
-  .running-r::before,
-  .running-r::after { display: none; }
-}
-
-.hero-brand-card::before {
-  content: '';
-  position: absolute;
-  inset: -18%;
-  z-index: -1;
-  background:
-    radial-gradient(circle at 24% 35%, rgba(255, 174, 78, .9), transparent 34%),
-    linear-gradient(135deg, #ff7a00 0%, #ff5500 46%, #ff2d00 100%);
-  filter: blur(42px);
-  opacity: .7;
-  transform: skewX(-8deg);
-  animation: orangeGlowShift 8s ease-in-out infinite alternate;
-}
-
-.hero-brand-card::after {
-  display: none;
-}
-
-.brand-real-row,
-.brand-talk-row {
-  animation: logoLettersIn 1s var(--ease) both;
-  text-shadow: 0 5px 22px rgba(0, 0, 0, .28);
-}
-
-.brand-talk-row {
-  animation-delay: .16s;
-}
-
-.brand-real-row .a-mint {
-  animation: mintLetterPulse 2.4s ease-in-out .8s infinite;
-}
-
-.brand-slogan-bottom {
-  animation: sloganReveal 1s var(--ease) .42s both;
-}
-
-@keyframes logoLettersIn {
-  from { opacity: 0; transform: translateY(22px) scale(.94); filter: blur(7px); }
-  to { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
-}
-
-@keyframes mintLetterPulse {
-  0%, 100% { transform: scale(1.04) rotate(0); filter: brightness(1); }
-  50% { transform: scale(1.13) rotate(-3deg); filter: brightness(1.2) drop-shadow(0 0 16px rgba(85, 243, 169, .8)); }
-}
-
-@keyframes sloganReveal {
-  from { opacity: 0; letter-spacing: 5px; }
-  to { opacity: 1; letter-spacing: .5px; }
-}
-
-@keyframes logoAmbientGlow {
-  50% { filter: drop-shadow(0 18px 32px rgba(255, 85, 0, .25)); }
-}
-
-@keyframes orangeGlowShift {
-  from { transform: translateX(-3%) skewX(-8deg) scale(.96); opacity: .58; }
-  to { transform: translateX(3%) skewX(-8deg) scale(1.04); opacity: .82; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .hero-brand-card,
-  .hero-brand-card::before,
-  .brand-real-row,
-  .brand-talk-row,
-  .brand-real-row .a-mint,
-  .brand-slogan-bottom,
-  .logo-faces-silhouette .f-left,
-  .logo-faces-silhouette .f-right,
-  .logo-faces-silhouette .f-left::before,
-  .logo-faces-silhouette .f-right::before { animation: none; transform: scale(.62, .2); }
-}
-
 /* ============ RESPONSIVE BREAKPOINTS ============ */
 @media (max-width:1080px){
   .hero-grid{grid-template-columns:1fr;gap:50px}
@@ -1326,224 +1159,6 @@ body > a[href="#"]:last-of-type:hover {
   .floating-rhombus{display:none}
   .hero-buttons-row { flex-direction: column; align-items: stretch; }
   .btn-orange-pill, .btn-dark-pill { justify-content: center; }
-}
-/* ============ MOBILE OPTIMIZATION OVERRIDES ============ */
-@media (max-width: 920px){
-  html{scroll-padding-top:76px}
-  .container{padding-inline:20px}
-  .section{padding-block:76px}
-  #nav .nav-inner{height:68px}
-  .hero{min-height:auto;padding:108px 0 54px}
-  .hero-grid{gap:34px}
-  .hero-left-intro{min-width:0}
-  .hero-brand-card{padding:0;overflow:visible}
-  .brand-real-row{font-size:clamp(3.5rem,13vw,5.5rem);letter-spacing:-1.5px}
-  .brand-talk-row{font-size:clamp(3.35rem,12.5vw,5.2rem);gap:5px}
-  .logo-faces-silhouette{width:clamp(42px,11vw,62px);height:clamp(56px,14vw,78px)}
-  .brand-slogan-bottom{font-size:clamp(.82rem,2.5vw,1.15rem);margin-top:12px}
-  .hero-motto-block{margin-top:22px}
-  .motto-lead{font-size:.95rem}
-  .motto-quote-box{padding:14px 16px;margin-bottom:20px}
-  .motto-quote-box p{font-size:.92rem}
-  .hero-visual{max-width:520px;min-height:420px;margin-inline:auto}
-  .hv-rings i:nth-child(3){display:none}
-  .hv-rings i:nth-child(2){width:390px;height:390px}
-  .chip-csat{left:0}
-  .chip-ticket{right:0}
-  .chip-volume{left:0}
-  .chip-global{right:0}
-  .chip-inner{padding:10px 12px;gap:8px}
-  .chip-txt strong{font-size:.72rem}
-  .chip-txt span{font-size:.62rem}
-  .stats{padding:24px 0}
-  .stats-grid{gap:0}
-  .stat{padding:22px 10px}
-  .stat-num{font-size:clamp(2rem,8vw,2.8rem)}
-  .stat p{font-size:.65rem;letter-spacing:.08em}
-  .about-grid,.contact-grid{gap:34px}
-  .section-head{margin-bottom:38px}
-  .section-sub{font-size:.96rem}
-  .svc-grid{gap:16px}
-  .svc-card{padding:24px 20px 20px}
-  .radial-wrap{gap:24px}
-  .radial-grid{gap:12px}
-  .radial-node{padding:16px 12px}
-  .gmap-panel{padding:18px 12px;border-radius:18px}
-  .gmap{min-width:620px;max-width:none;transform:translateX(-5%)}
-  .gmap-panel{overflow:hidden}
-  .timeline{padding:34px 20px}
-  .tl-rail{left:20px}
-  .tl-step{padding-left:38px}
-  .contact-form{padding:24px 18px}
-  .f-field input,.f-field select,.f-field textarea{font-size:16px}
-  .end-solutions-section{padding:54px 0 76px}
-  .end-solutions-panel{padding:28px 20px;border-radius:20px}
-}
-
-@media (max-width: 560px){
-  .container{padding-inline:16px}
-  .section{padding-block:62px}
-  h1{font-size:clamp(2.35rem,11vw,3.4rem)}
-  h2{font-size:clamp(1.8rem,9vw,2.45rem)}
-  .eyebrow{font-size:.64rem;letter-spacing:.12em;padding:6px 12px;gap:8px}
-  .eyebrow::before{width:8px;height:8px}
-  .hero{padding-top:94px;padding-bottom:38px}
-  .hero-grid{gap:18px}
-  .brand-real-row{font-size:clamp(2.75rem,14vw,4.4rem)}
-  .brand-talk-row{font-size:clamp(2.65rem,13.5vw,4.15rem)}
-  .logo-faces-silhouette{width:39px;height:53px}
-  .logo-faces-silhouette .f-left::before,.logo-faces-silhouette .f-right::before{width:11px;height:6px}
-  .brand-slogan-bottom{font-size:.72rem;letter-spacing:0}
-  .motto-lead{font-size:.9rem;line-height:1.55}
-  .motto-quote-box p{font-size:.84rem;line-height:1.5}
-  .hero-buttons-row{gap:10px}
-  .btn-orange-pill,.btn-dark-pill{width:100%;padding:13px 18px;font-size:.86rem}
-  .hero-visual{min-height:360px;aspect-ratio:1/1.05;overflow:visible}
-  .hv-card{width:min(280px,78vw)}
-  .agent-card{padding:16px;border-radius:16px}
-  .agent-top{gap:8px;margin-bottom:12px}
-  .agent-ava{width:38px;height:38px}
-  .agent-id strong{font-size:.8rem}
-  .agent-id span{font-size:.62rem}
-  .live{font-size:.55rem;padding:4px 7px}
-  .agent-call{padding:9px 10px;margin-bottom:10px}
-  .agent-stats div{padding:8px 2px}
-  .agent-stats strong{font-size:.9rem}
-  .agent-stats span{font-size:.52rem}
-  .chip-inner{padding:8px 9px;gap:6px;border-radius:10px}
-  .chip-txt strong{font-size:.58rem}
-  .chip-txt span{font-size:.5rem}
-  .chip-csat{top:3%;left:-2%}
-  .chip-ticket{top:27%;right:-2%}
-  .chip-volume{bottom:15%;left:-2%}
-  .chip-global{bottom:0;right:-2%}
-  .spark{width:48px;height:17px}
-  .mini-bars{height:17px}
-  .stats-grid{grid-template-columns:1fr 1fr}
-  .stat-num{font-size:2rem}
-  .stat p{font-size:.58rem;line-height:1.35}
-  .chain-node{gap:14px}
-  .chain-orb{width:54px;height:54px}
-  .chain-node h4{font-size:.95rem}
-  .chain-node p{font-size:.75rem}
-  .radial-node{width:100%;min-height:0}
-  .gmap-legend{gap:10px}
-  .gl-item{padding:14px 12px;gap:9px}
-  .gl-item strong{font-size:.78rem}
-  .gl-item span{font-size:.66rem}
-  .timeline{padding:28px 16px}
-  .tl-rail{left:16px}
-  .tl-step{padding-left:34px}
-  .tl-step h3{font-size:1rem}
-  .tl-step p{font-size:.78rem}
-  .f-row{gap:0}
-  .contact-form .btn{width:100%;justify-content:center}
-  .end-text-side p{font-size:.92rem}
-  .end-pill-card{padding:14px 16px;gap:14px}
-  .end-pill-card .pill-label{font-size:.92rem}
-  .end-explore-btn{font-size:.78rem;padding-left:20px}
-  .end-btn-circle{width:36px;height:36px}
-  footer{padding-top:52px}
-  .f-grid{gap:28px}
-  .f-bottom{align-items:flex-start;flex-direction:column}
-  .f-legal{gap:16px;flex-wrap:wrap}
-}
-
-@media (max-width: 380px){
-  .brand-real-row{font-size:2.55rem}
-  .brand-talk-row{font-size:2.45rem}
-  .logo-faces-silhouette{width:34px;height:47px}
-  .hero-visual{min-height:330px}
-  .chip-txt strong{font-size:.52rem}
-  .chip-txt span{display:none}
-  .chip-inner .ic{width:15px;height:15px}
-}
-
-@media (prefers-reduced-motion: reduce){
-  .hero-brand-card,.agent-card,.chip-inner,.hv-glow{animation:none}
-}
-
-/* Improve contrast and readability for secondary copy and compact labels. */
-:root{
-  --muted:#E0E0EA;
-  --muted2:#C1C1D0;
-}
-:where(.agent-id span,.live,.agent-stats span,.chip-txt span,.stat p,.ind-num,.tl-num,.gl-item span,.f-field label,.f-note,.t-person span,.f-col a,.f-col li,.f-bottom p,.f-legal a,.careers-meta p){
-  font-size:max(.75rem,.8em);
-  line-height:1.4;
-}
-/* ============ FLUID LAYOUT & SMALL-SCREEN FINISHING ============ */
-*,*::before,*::after{min-width:0}
-html,body{width:100%;max-width:100%;overflow-x:clip}
-img,svg,canvas,video{max-width:100%}
-.container{width:100%}
-
-@media (max-width:1080px){
-  .f-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:32px}
-  .about-showcase-panel{gap:30px}
-  .showcase-services{gap:14px}
-  .showcase-card{padding:20px 16px}
-}
-
-@media (max-width:920px){
-  #nav.scrolled .nav-inner{height:66px}
-  .hero-grid,.about-grid,.contact-grid,.end-solutions-panel{grid-template-columns:minmax(0,1fr)}
-  .hero-left-intro,.hero-visual,.about-copy,.contact-form,.contact-info{width:100%;min-width:0}
-  .hero-visual{overflow:hidden}
-  .showcase-proof{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .showcase-tagline{grid-column:1/-1;justify-self:center}
-  .careers-inner{align-items:flex-start}
-  .gmap-legend{grid-template-columns:repeat(2,minmax(0,1fr))}
-}
-
-@media (max-width:680px){
-  .container{padding-inline:18px}
-  .section{padding-block:64px}
-  .section-head{margin-bottom:34px}
-  .stats-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .svc-grid,.radial-grid,.showcase-services{grid-template-columns:minmax(0,1fr)}
-  .f-grid{grid-template-columns:minmax(0,1fr);gap:26px}
-  .f-row{grid-template-columns:minmax(0,1fr);gap:0}
-  .showcase-proof{grid-template-columns:minmax(0,1fr)}
-  .showcase-tagline{grid-column:auto;justify-self:stretch}
-  .gmap-legend{grid-template-columns:minmax(0,1fr)}
-  .hero-visual{min-height:340px;aspect-ratio:1/1;overflow:hidden}
-  .hv-card{width:min(280px,78vw)}
-  .chip-csat{left:0}
-  .chip-ticket{right:0}
-  .chip-volume{left:0}
-  .chip-global{right:0}
-  .gmap{width:100%;min-width:0;max-width:100%;transform:none}
-  .gmap-panel{overflow:hidden}
-  .contact-form{padding:24px 18px}
-  .contact-form .btn{width:100%;justify-content:center}
-  .c-items li{align-items:flex-start;gap:12px}
-  .c-items li>div:last-child{min-width:0;overflow-wrap:anywhere}
-  .c-items a,.c-items b{font-size:.92rem}
-  .f-bottom{align-items:flex-start;flex-direction:column}
-  .f-legal{gap:14px;flex-wrap:wrap}
-  .end-solutions-panel{gap:28px}
-  .modal-panel{padding:32px 22px}
-  body> a[href="#"]:last-of-type{max-width:calc(100% - 32px);margin:20px 16px}
-}
-
-@media (max-width:380px){
-  .container{padding-inline:14px}
-  .brand{gap:7px}
-  .brand svg{width:27px;height:27px}
-  .brand-name{font-size:1.05rem}
-  #nav .nav-inner{padding-inline:14px}
-  .hero-brand-card .brand-real-row{font-size:clamp(2.35rem,13vw,3.1rem);letter-spacing:-1px}
-  .hero-brand-card .brand-talk-row{font-size:clamp(2.25rem,12.5vw,3rem);gap:3px}
-  .hero-brand-card .logo-faces-silhouette{width:32px;height:44px}
-  .hero-brand-card .brand-slogan-bottom{font-size:.66rem}
-  .hero-visual{min-height:310px}
-  .chip-inner{padding:7px;gap:5px}
-  .chip-txt strong{font-size:.52rem}
-  .agent-card{padding:13px}
-  .stat{padding-inline:6px}
-  .end-pill-card{padding:13px 14px}
-  .btn{white-space:normal}
 }
 </style>
 </head>
@@ -1642,29 +1257,14 @@ img,svg,canvas,video{max-width:100%}
   <symbol id="i-expand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
     <path d="M8 3H5a2 2 0 0 0-2 2v3M16 3h3a2 2 0 0 1 2 2v3M8 21H5a2 2 0 0 1-2-2v-3M16 21h3a2 2 0 0 0 2-2v-3"/><path d="M9 9h6v6"/>
   </symbol>
-  <symbol id="i-cart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-    <circle cx="9" cy="20.5" r="1.4"/><circle cx="19" cy="20.5" r="1.4"/><path d="M2 3h3l2.7 13.2a2 2 0 0 0 2 1.6h8.7a2 2 0 0 0 2-1.6L22 7H6"/>
-  </symbol>
   <symbol id="i-health" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
     <path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/><path d="M8 12h2l1.5-2.5 2 5L15 12h2"/>
-  </symbol>
-  <symbol id="i-bank" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M3 22h18M5 22V10M9.5 22V10M14.5 22V10M19 22V10"/><path d="M3 8l9-5.5L21 8v2H3V8z"/>
   </symbol>
   <symbol id="i-cloud" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
     <path d="M18 10h-1.3A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/><path d="M12 12v5M10 14.5 12 12l2 2.5"/>
   </symbol>
-  <symbol id="i-signal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
-    <path d="M5 12.5a10 10 0 0 1 14 0"/><path d="M8.5 16a5 5 0 0 1 7 0"/><circle cx="12" cy="19.5" r="1.4" fill="currentColor"/>
-  </symbol>
-  <symbol id="i-plane" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M22 2 11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/>
-  </symbol>
   <symbol id="i-building" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
     <path d="M3 21.5h18"/><path d="M5 21.5V5a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v16.5"/><path d="M15 9.5h4a2 2 0 0 1 2 2v10"/><path d="M8.5 7.5h3M8.5 11.5h3M8.5 15.5h3"/>
-  </symbol>
-  <symbol id="i-bag" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M6 7h12l1 13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1L6 7z"/><path d="M9 10V6a3 3 0 0 1 6 0v4"/>
   </symbol>
   <symbol id="i-sparkle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
     <path d="M12 2l2.4 6.8L21 12l-6.6 3.2L12 22l-2.4-6.8L3 12l6.6-3.2z"/><path d="M19 5l1 2 2 1-2 1-1 2-1-2-2-1 2-1z"/>
@@ -1696,9 +1296,6 @@ img,svg,canvas,video{max-width:100%}
   </symbol>
   <symbol id="i-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
     <path d="M6 6l12 12M18 6L6 18"/>
-  </symbol>
-  <symbol id="i-star" viewBox="0 0 24 24" fill="currentColor">
-    <path d="M12 2l2.9 6.6 7.1.7-5.4 4.8 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.3l7.1-.7L12 2z"/>
   </symbol>
   <symbol id="i-in" viewBox="0 0 24 24" fill="currentColor">
     <path d="M4.98 3.5A2.49 2.49 0 1 1 .01 3.5a2.49 2.49 0 0 1 4.97 0zM.3 8.1h4.4V23H.3V8.1zm7.2 0h4.2v2.1h.1c.6-1.1 2-2.3 4.2-2.3 4.5 0 5.3 2.9 5.3 6.7V23h-4.4v-7.2c0-1.7 0-4-2.4-4s-2.8 1.9-2.8 3.9V23H7.5V8.1z"/>
@@ -1752,18 +1349,14 @@ img,svg,canvas,video{max-width:100%}
 
 <main id="main">
 
-<!-- ============ HERO: IMAGE 2 BIG LOGO & IMAGE 3 MOTTO ============ -->
+<!-- ============ HERO ============ -->
 <section class="hero" id="home">
   <div class="container hero-grid">
-    
-    <!-- LEFT COLUMN: REPLACED WITH BIG ANIMATED LOGO + MOTTO -->
     <div class="hero-left-intro">
-      
-      <!-- IMAGE 2: BIG ANIMATED LOGO CARD -->
       <div class="hero-brand-card">
-              <div class="brand-real-row">
-        <span class="running-r">R<i class="r-leg r-leg-left"></i><i class="r-leg r-leg-right"></i></span>E<span class="a-mint">A</span>L
-      </div>
+        <div class="brand-real-row">
+          <span class="running-r">R<i class="r-leg r-leg-left"></i><i class="r-leg r-leg-right"></i></span>E<span class="a-mint">A</span>L
+        </div>
         <div class="brand-talk-row">
           <span>ta</span>
           <div class="logo-faces-silhouette">
@@ -1775,7 +1368,6 @@ img,svg,canvas,video{max-width:100%}
         <div class="brand-slogan-bottom">Real Conversation, Real Opportunities</div>
       </div>
 
-      <!-- IMAGE 3: MOTTO CONTAINER & CTA BUTTONS -->
       <div class="hero-motto-block">
         <p class="motto-lead">
           <strong>RealTalk Is A Smart Lead Generation Specialist BPO Firm Which Actually Helps Businesses Get Qualified Opportunities That They Can Close. Our Trained Team Knows What Info's To Get &amp; How To Qualify The People Behind Them — Uncovering The Information That Matters So Your Sales Team Can Spend Less Time On Dead Ends And More Time Closing Real Opportunities.</strong>
@@ -1795,10 +1387,9 @@ img,svg,canvas,video{max-width:100%}
           </a>
         </div>
       </div>
-
     </div>
 
-    <!-- RIGHT COLUMN: THE ANIMATED MODULE -->
+    <!-- RIGHT COLUMN -->
     <div class="hero-visual" aria-hidden="true">
       <div class="hv-glow"></div>
       <svg class="hv-map" data-depth="6" viewBox="0 0 1000 520" preserveAspectRatio="xMidYMid slice"><use href="#worldMap"/></svg>
@@ -1809,10 +1400,8 @@ img,svg,canvas,video{max-width:100%}
         <path class="hv-stream" d="M490 490 C 420 430, 340 420, 285 300"/>
       </svg>
       
-      <!-- Rotating Radar Rings -->
       <div class="hv-rings" data-depth="12"><i></i><i></i><i></i></div>
       
-      <!-- Central Active Agent Card -->
       <div class="hv-card" data-depth="10">
         <div class="agent-card">
           <div class="agent-top">
@@ -1833,7 +1422,6 @@ img,svg,canvas,video{max-width:100%}
         </div>
       </div>
 
-      <!-- Floating Dynamic Metric Chips -->
       <div class="hv-chip chip-csat" data-depth="18">
         <div class="chip-inner">
           <svg class="spark" viewBox="0 0 70 22"><polyline points="2,17 12,13 22,15 32,8 42,11 52,5 62,7 68,3"/></svg>
@@ -1843,7 +1431,7 @@ img,svg,canvas,video{max-width:100%}
 
       <div class="hv-chip chip-ticket" data-depth="22">
         <div class="chip-inner">
-          <svg class="ic"><use href="#i-chat"/></svg>
+          <svg class="ic"><use href="#i-terminal"/></svg>
           <div class="chip-txt"><strong>Ticket #4821 resolved</strong><span>2m 08s · SLA met</span></div>
         </div>
       </div>
@@ -1862,7 +1450,6 @@ img,svg,canvas,video{max-width:100%}
         </div>
       </div>
     </div>
-
   </div>
 </section>
 
@@ -2004,7 +1591,7 @@ img,svg,canvas,video{max-width:100%}
   </div>
 </section>
 
-<!-- ============ WHY US (RADIAL ENGINE) ============ -->
+<!-- ============ WHY US ============ -->
 <section class="section" id="why">
   <div class="container">
     <div class="section-head center" data-reveal>
@@ -2032,7 +1619,7 @@ img,svg,canvas,video{max-width:100%}
   </div>
 </section>
 
-<!-- ============ INDUSTRIES (DRAGGABLE RAIL) ============ -->
+<!-- ============ INDUSTRIES ============ -->
 <section class="section" id="industries">
   <div class="container">
     <div class="section-head" data-reveal>
@@ -2140,13 +1727,15 @@ img,svg,canvas,video{max-width:100%}
       <p>Tell us about your volume goals, lead criteria, or current bottlenecks — we'll provide a clear operational blueprint.</p>
       <ul class="c-items">
         <li><div class="c-ic"><svg class="ic"><use href="#i-mail"/></svg></div><div><span>Email</span><a href="mailto:info@realtalk.business">info@realtalk.business</a></div></li>
-            <li><div class="c-ic"><svg class="ic"><use href="#i-phone"/></svg></div><div><span>Phone</span><a href="tel:+15162316671">+1 (516) 231-6671</a></div></li>
-    <li><div class="c-ic whatsapp"><svg class="ic"><use href="#i-whatsapp"/></svg></div><div><span>WhatsApp Business</span><a href="https://wa.me/8801344800685" target="_blank" rel="noopener noreferrer">+880 1344-800685</a></div></li>
-    <li><div class="c-ic"><svg class="ic"><use href="#i-pin"/></svg></div><div><span>Official Website</span><b>www.realtalk.business</b></div></li>
+        <li><div class="c-ic"><svg class="ic"><use href="#i-phone"/></svg></div><div><span>Phone</span><a href="tel:+15162316671">+1 (516) 231-6671</a></div></li>
+        <li><div class="c-ic whatsapp"><svg class="ic"><use href="#i-whatsapp"/></svg></div><div><span>WhatsApp Business</span><a href="https://wa.me/8801344800685" target="_blank" rel="noopener noreferrer">+880 1344-800685</a></div></li>
+        <li><div class="c-ic"><svg class="ic"><use href="#i-pin"/></svg></div><div><span>Official Website</span><b>www.realtalk.business</b></div></li>
         <li><div class="c-ic"><svg class="ic"><use href="#i-clock"/></svg></div><div><span>Working Hours</span><b>24/7/365 — Global Follow-The-Sun Ops</b></div></li>
       </ul>
     </div>
-    <form class="contact-form card" id="contactForm" data-reveal data-delay=".15" novalidate>
+    
+    <!-- FORMSPREE CONNECTED CONTACT FORM -->
+    <form class="contact-form card" id="contactForm" action="https://formspree.io/f/meqeqjel" method="POST" data-reveal data-delay=".15" novalidate>
       <div class="f-row">
         <div class="f-field"><label for="fName">Full Name *</label><input id="fName" name="name" type="text" placeholder="Jane Cooper" required></div>
         <div class="f-field"><label for="fCompany">Company Name</label><input id="fCompany" name="company" type="text" placeholder="Acme Solar Inc."></div>
@@ -2174,14 +1763,10 @@ img,svg,canvas,video{max-width:100%}
   </div>
 </section>
 
-<!-- ========================================================
-     NEW END SECTION: IMAGE 1 PILL STACK MOVED TO THE END
-     ======================================================== -->
+<!-- ============ END SOLUTIONS ============ -->
 <section class="end-solutions-section">
   <div class="container">
     <div class="end-solutions-panel">
-      
-      <!-- Text & Value Prop -->
       <div class="end-text-side">
         <span class="eyebrow" style="margin-bottom:16px;">Core Infrastructure</span>
         <h2>End-To-End BPO Engineered For Rapid Scale.</h2>
@@ -2191,7 +1776,6 @@ img,svg,canvas,video{max-width:100%}
         </div>
       </div>
 
-      <!-- Exact Image 1 Components -->
       <div class="end-pills-col">
         <div class="end-pill-card">
           <svg class="pill-icon-svg" viewBox="0 0 24 24"><use href="#i-headset"/></svg>
@@ -2215,7 +1799,6 @@ img,svg,canvas,video{max-width:100%}
           </span>
         </a>
       </div>
-
     </div>
   </div>
 </section>
@@ -2393,7 +1976,7 @@ qsa('.svc-card').forEach(card=>{
   card.addEventListener('click',e=>{ if(!e.target.closest('button')) setOpen(!card.classList.contains('open')); });
 });
 
-/* ---------- Industries: tap toggle (touch) + drag scroll ---------- */
+/* ---------- Industries: tap toggle & drag ---------- */
 qsa('.ind-item').forEach(item=>{
   item.addEventListener('click',()=>{
     if(matchMedia('(hover: none)').matches) item.classList.toggle('open');
@@ -2469,32 +2052,6 @@ if(timelineEl){
   }
 }
 
-/* ---------- Testimonials carousel ---------- */
-(function(){
-  const track=qs('#tTrack'); if(!track) return;
-  const slides=qsa('.t-slide',track), dotsWrap=qs('#tDots');
-  let idx=0, timer=null;
-  slides.forEach((_,i)=>{
-    const d=document.createElement('button');
-    d.className='t-dot'; d.setAttribute('aria-label','Show testimonial '+(i+1));
-    d.addEventListener('click',()=>{go(i);restart();});
-    dotsWrap.appendChild(d);
-  });
-  const dotEls=qsa('.t-dot',dotsWrap);
-  function go(i){
-    idx=(i+slides.length)%slides.length;
-    track.style.transform=`translateX(-${idx*100}%)`;
-    dotEls.forEach((d,j)=>d.classList.toggle('on',j===idx));
-  }
-  function restart(){clearInterval(timer);timer=setInterval(()=>go(idx+1),6500);}
-  qs('#tPrev').addEventListener('click',()=>{go(idx-1);restart();});
-  qs('#tNext').addEventListener('click',()=>{go(idx+1);restart();});
-  const zone=qs('#testimonials');
-  zone.addEventListener('mouseenter',()=>clearInterval(timer));
-  zone.addEventListener('mouseleave',restart);
-  go(0);restart();
-})();
-
 /* ---------- Magnetic buttons ---------- */
 if(hasGsap&&finePointer&&!reduced){
   qsa('.magnetic').forEach(el=>{
@@ -2545,9 +2102,11 @@ if(hasGsap&&finePointer&&!reduced){
   })();
 })();
 
-/* ---------- Contact form ---------- */
+/* ---------- Contact form (Formspree AJAX Handler) ---------- */
 const form=qs('#contactForm');
-form.addEventListener('submit',e=>{
+const submitBtn=qs('button[type="submit"]', form);
+
+form.addEventListener('submit', async e => {
   e.preventDefault();
   let ok=true;
   qsa('[required]',form).forEach(f=>{
@@ -2556,8 +2115,35 @@ form.addEventListener('submit',e=>{
   const email=qs('#fEmail');
   if(email.value.trim()&&!/^\S+@\S+\.\S+$/.test(email.value)){email.classList.add('bad');ok=false;}
   if(!ok){showToast('Please fill in the required fields correctly.');return;}
-  showToast('Inquiry sent — our team will get back to you within 24 hours.');
-  form.reset();
+
+  const origHtml = submitBtn.innerHTML;
+  submitBtn.disabled = true;
+  submitBtn.textContent = 'Sending...';
+
+  try {
+    const response = await fetch(form.action, {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    });
+
+    if (response.ok) {
+      showToast('Inquiry sent — our team will get back to you within 24 hours.');
+      form.reset();
+    } else {
+      const data = await response.json();
+      if (data && data.errors) {
+        showToast(data.errors.map(err => err.message).join(', '));
+      } else {
+        showToast('Oops! There was a problem submitting your form.');
+      }
+    }
+  } catch (err) {
+    showToast('Network error. Please check your connection and try again.');
+  } finally {
+    submitBtn.disabled = false;
+    submitBtn.innerHTML = origHtml;
+  }
 });
 qsa('input,select,textarea',form).forEach(f=>f.addEventListener('input',()=>f.classList.remove('bad')));
 
@@ -2566,11 +2152,11 @@ const legalDocs={
   privacy:{title:'Privacy Policy',body:[
     'REAL TALK collects only the information you choose to share through this site — your name, company and contact details — and uses it solely to respond to your inquiry.',
     'We never sell personal data, never run third-party ad trackers, and delete inquiry records after 12 months of inactivity.',
-    'Questions about your data? Write to privacy@realtalk.com and we will respond within five business days.']},
+    'Questions about your data? Write to info@realtalk.business and we will respond within five business days.']},
   terms:{title:'Terms & Conditions',body:[
-    'The content of this site is provided for general information about REAL TALK\u2019s services and may change without prior notice.',
+    'The content of this site is provided for general information about REAL TALK’s services and may change without prior notice.',
     'Actual service engagements are governed exclusively by individually signed statements of work, including agreed SLAs, pricing and data-handling terms.',
-    'All third-party trademarks referenced on this site belong to their respective owners. Contact legal@realtalk.com for any questions.']}
+    'All third-party trademarks referenced on this site belong to their respective owners. Contact info@realtalk.business for any questions.']}
 };
 const modal=qs('#legalModal');
 function openModal(key){
@@ -2591,19 +2177,3 @@ qs('#year').textContent=new Date().getFullYear();
 </script>
 </body>
 </html>
-<!-- do not change the markup -->
-<a href="#">
-  Checkout
-</a>
-
-<!-- 
-1. make look like a button
-2. change text color red on hover
-
-Cannot change html, only css.
-Look closely at
--->  
-
-<div></div>
-<div></div>
-<div></div>
