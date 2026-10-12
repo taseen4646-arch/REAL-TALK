@@ -1104,6 +1104,9 @@ footer{background:var(--black);padding:70px 0 30px;border-top:3px solid #000;pos
 .modal-close svg{width:15px;height:15px}
 
 /* ============ RESPONSIVE BREAKPOINTS ============ */
+html,body{width:100%;max-width:100%;overflow-x:clip}
+.container{width:100%;min-width:0}
+.hero-grid > *, .about-grid > *, .contact-grid > *, .end-solutions-panel > *, .about-showcase-panel > *{min-width:0}
 @media (max-width:1080px){
   .hero-grid{grid-template-columns:1fr;gap:50px}
   .end-solutions-panel{grid-template-columns:1fr;gap:40px;text-align:center}
@@ -1151,7 +1154,7 @@ footer{background:var(--black);padding:70px 0 30px;border-top:3px solid #000;pos
   .radial-grid{grid-template-columns:1fr}
   .gmap-legend{grid-template-columns:1fr}
   .f-grid{grid-template-columns:1fr}
-  .hero-visual{max-width:100%;aspect-ratio:1/1.25}
+  .hero-visual{width:100%;max-width:100%;aspect-ratio:1/1.25;overflow:hidden}
   .hv-card{width:min(320px,calc(100% - 24px))}
   .agent-card{padding:16px}
   .chip-ticket{right:-2%}
