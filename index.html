@@ -1151,12 +1151,47 @@ footer{background:var(--black);padding:70px 0 30px;border-top:3px solid #000;pos
   .radial-grid{grid-template-columns:1fr}
   .gmap-legend{grid-template-columns:1fr}
   .f-grid{grid-template-columns:1fr}
-  .hero-visual{max-width:100%}
+  .hero-visual{max-width:100%;aspect-ratio:1/1.25}
+  .hv-card{width:min(320px,calc(100% - 24px))}
+  .agent-card{padding:16px}
   .chip-ticket{right:-2%}
   .chip-volume{left:-2%}
+  .chip-inner{gap:8px;padding:10px 12px}
+  .chip-csat{left:0}
+  .chip-ticket{right:0}
+  .chip-volume{left:0}
+  .chip-global{right:0}
   .floating-rhombus{display:none}
   .hero-buttons-row { flex-direction: column; align-items: stretch; }
   .btn-orange-pill, .btn-dark-pill { justify-content: center; }
+  .f-legal{gap:14px;flex-wrap:wrap}
+  .modal-panel{padding:34px 24px}
+}
+@media (max-width:760px){
+  .about-showcase-panel{grid-template-columns:1fr;gap:28px}
+  .showcase-services{grid-template-columns:1fr}
+  .showcase-card p{min-height:0}
+  .showcase-proof{grid-template-columns:1fr 1fr}
+  .showcase-tagline{margin-inline:auto}
+  .gmap-panel{padding:18px}
+  .contact-grid{gap:36px}
+}
+@media (max-width:380px){
+  .container{padding-inline:16px}
+  .brand-name{font-size:1.08rem}
+  #nav .nav-inner{gap:12px}
+  .hero{padding-top:106px}
+  .brand-real-row{font-size:clamp(3.5rem,18vw,4.4rem)}
+  .brand-talk-row{font-size:clamp(3.4rem,17vw,4.2rem);gap:4px}
+  .logo-faces-silhouette{width:44px;height:60px}
+  .agent-stats{gap:4px}
+  .agent-stats div{padding-inline:2px}
+  .agent-stats span{font-size:.56rem}
+  .c-items a,.c-items b{font-size:.9rem;overflow-wrap:anywhere}
+  .f-bottom{align-items:flex-start}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
 }
 </style>
 </head>
@@ -1812,9 +1847,9 @@ footer{background:var(--black);padding:70px 0 30px;border-top:3px solid #000;pos
         <p>A global BPO company delivering specialized appointment setting, inbound customer care, and operations scaling for solar, janitorial, and high-growth businesses.</p>
         <div class="f-socials">
           <a href="#" aria-label="LinkedIn"><svg><use href="#i-in"/></svg></a>
-          <a href="#" aria-label="X"><svg><use href="#i-x"/></svg></a>
-          <a href="#" aria-label="Facebook"><svg><use href="#i-fb"/></svg></a>
-          <a href="#" aria-label="Instagram"><svg><use href="#i-ig"/></svg></a>
+          <a href="https://x.com/RealTalk_BPO" aria-label="X" target="_blank" rel="noopener noreferrer"><svg><use href="#i-x"/></svg></a>
+          <a href="https://www.facebook.com/profile.php?id=61595194378584" aria-label="Facebook" target="_blank" rel="noopener noreferrer"><svg><use href="#i-fb"/></svg></a>
+          <a href="https://www.instagram.com/realtalk_business/" aria-label="Instagram" target="_blank" rel="noopener noreferrer"><svg><use href="#i-ig"/></svg></a>
         </div>
       </div>
       <div class="f-col">
