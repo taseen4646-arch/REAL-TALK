@@ -1193,6 +1193,19 @@ html,body{width:100%;max-width:100%;overflow-x:clip}
   .c-items a,.c-items b{font-size:.9rem;overflow-wrap:anywhere}
   .f-bottom{align-items:flex-start}
 }
+@media (max-width:920px){
+  /* Use a dark mobile canvas so the geometric backdrop doesn't leave a huge orange field beside the content. */
+  body{background-color:var(--black)}
+  .site-bg-geometry{
+    background:
+      radial-gradient(ellipse at 100% 18%,rgba(255,85,0,.18),transparent 46%),
+      linear-gradient(145deg,transparent 0 62%,rgba(255,85,0,.08) 62% 66%,transparent 66%);
+  }
+  .hero{min-height:0;padding:110px 0 48px}
+  .hero-grid{grid-template-columns:minmax(0,1fr);width:100%}
+  .hero-left-intro,.hero-visual{width:100%;min-width:0;max-width:100%}
+  .hero-visual{overflow:hidden}
+}
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
 }
